@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
-      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
+    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
 }]]></component>
@@ -36,7 +37,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Game.executor": "Run",
+    "Application.Game.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -61,6 +62,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-1.8.0_392-liberica-1.8.0_392-f644763e9732-f07c4aaa" />
+        <option value="jdk-1.8.0_402-liberica-1.8.0_402-3183f394aec4-fa114bc0" />
       </set>
     </attachedChunks>
   </component>
@@ -72,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709216344282</updated>
-      <workItem from="1709216345285" duration="810000" />
+      <workItem from="1709216345285" duration="1827000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />
@@ -82,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709216434906</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
+      <option name="closed" value="true" />
+      <created>1709217392365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709217392365</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including" />
     <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files." />
+    <MESSAGE value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
   </component>
 </project>

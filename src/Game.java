@@ -19,55 +19,53 @@ public class Game extends Canvas implements Runnable {
 
     @Override
     public void run() {
-        double TARGET_FPS = 60.0;
-        double TARGET_TIME_BETWEEN_RENDERS = 1000000000 / TARGET_FPS;
         this.requestFocus();
+        final int targetFps = 60;
+        final long nanoSecondInterval = 1_000_000_000 / targetFps;
         long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
+        int updates = 0;
 
-        while (isRunning) {
+        while(isRunning) {
             long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-            while (delta >= 1){
+            if(now - lastTime > nanoSecondInterval) {
                 tick();
-                delta--;
-            }
-            // Only render if we have time
-            if (now - lastTime >= TARGET_TIME_BETWEEN_RENDERS) {
+                updates++;
                 render();
                 frames++;
+                lastTime = now;
+            }
+
+            if(System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                System.out.println("Ticks: " + updates + ", FPS:" + frames);
+                frames = 0;
+                updates = 0;
             }
         }
+
         try {
             stop();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-    public void tick(){
-    }
-    public void render(){
+
+    public void render() {
         BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null){
+        if(bs == null) {
             this.createBufferStrategy(3);
             return;
         }
-
         Graphics g = bs.getDrawGraphics();
+        g.setColor(Color.green);
+        g.fillRect(0, 0, getWidth(), getHeight());
 
-        /////////////////////////////////
-        //Drawing stuff for the game
-        g.setColor(Color.red);
-        g.fillRect(0,0,1000,563);
-
-        /////////////////////////////////
         g.dispose();
         bs.show();
+    }
+    public void tick(){
     }
     private void start(){
         isRunning = true;
