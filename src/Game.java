@@ -4,6 +4,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+
 public class Game extends Canvas implements Runnable {
 
     private static boolean isRunning = false;
@@ -14,10 +15,11 @@ public class Game extends Canvas implements Runnable {
         new Window(1000,700,"Pong", this);
         start();
         handler = new Handler();
-        handler.addObject(new Paddle(100, 100, ID.P1Pabble));
+        handler.addObject(new Paddle(100, 100, ID.P2Pabble));
 
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException
+    {
         new Game();
     }
 

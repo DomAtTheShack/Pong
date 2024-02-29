@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="" />
@@ -60,7 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Game.executor": "Debug",
+    "Application.Game.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -136,16 +133,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Paddle.java</url>
-          <line>7</line>
-          <properties class="Paddle" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
-          <line>20</line>
+          <line>26</line>
           <properties class="Paddle" method="render">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -154,7 +142,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Paddle.java</url>
-          <line>14</line>
+          <line>20</line>
           <properties class="Paddle" method="tick">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -163,7 +151,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Paddle.java</url>
-          <line>27</line>
+          <line>33</line>
           <properties class="Paddle" method="getBounds">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -172,7 +160,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Paddle.java</url>
-          <line>9</line>
+          <line>10</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
