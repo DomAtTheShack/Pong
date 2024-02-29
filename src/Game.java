@@ -14,6 +14,7 @@ public class Game extends Canvas implements Runnable {
         new Window(1000,700,"Pong", this);
         start();
         handler = new Handler();
+        handler.addObject(new Paddle(100, 100, ID.P1Pabble));
 
     }
     public static void main(String[] args) throws IOException {
@@ -62,8 +63,9 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.WHITE);
+        g.setColor(Color.white);
         g.fillRect(0, 0, getWidth(), getHeight());
+        handler.render(g);
 
         g.dispose();
         bs.show();
