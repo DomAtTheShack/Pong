@@ -8,10 +8,13 @@ public class Game extends Canvas implements Runnable {
 
     private static boolean isRunning = false;
     private static Thread thread;
+    private Handler handler;
 
     public Game() throws IOException {
-        new Window(1000,563,"Pong", this);
+        new Window(1000,700,"Pong", this);
         start();
+        handler = new Handler();
+
     }
     public static void main(String[] args) throws IOException {
         new Game();
@@ -59,7 +62,7 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.green);
+        g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
 
         g.dispose();
