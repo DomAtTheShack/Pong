@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="" />
+    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
+      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Handler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,14 +36,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Game.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -44,7 +72,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709216344282</updated>
+      <workItem from="1709216345285" duration="810000" />
     </task>
+    <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
+      <option name="closed" value="true" />
+      <created>1709216434906</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709216434906</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including" />
+    <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files." />
   </component>
 </project>
