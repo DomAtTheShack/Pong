@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
+
+import GameGUI.GameObject;
 import GameGUI.ID;
 
 /**
@@ -21,7 +23,7 @@ public abstract class Packet implements Serializable
     /**
      * This is the message that will be sent to the server
      */
-    private String message;
+    private String Sender;
     /**
      * This is the type of packet that will be sent to the server
      */
@@ -29,133 +31,61 @@ public abstract class Packet implements Serializable
     /**
      * This is the list of users that will be sent to the server
      */
-    private List<String> users;
+    private List<GameObject> ObjectsOnScreen;
     /**
      * This is the username of the user that sent the packet
      */
-    private String userSent;
+    private boolean gameState;
     /**
      * This is the room that the user is currently in
      */
-    private int room;
-    /**
-     * This is the image that will be sent to the server
-     */
-    private byte[] image;
-    /**
-     * This is the old room that the user was in
-     */
-    private int oldRoom;
+    private int currentFrame;
 
 
-    /**
-     * This is the constructor that will be used to create a packet that will be sent to the server
-     * @param message This is the message that will be sent to the server
-     * @param ID This is the type of packet that will be sent to the server
-     * @param room This is the room that the user is currently in
-     */
-    public Packet(String message, ID ID, int room)
+    public Packet(String sender, ID ID, int currentFrame, List<GameObject> objectsOnScreen)
     {
-        this.message = message;
+        this.Sender = sender;
         this.id = ID;
-        this.room = room;
+        this.ObjectsOnScreen = objectsOnScreen;
+        this.currentFrame = currentFrame;
     }
 
-    /**
-     * This is the constructor that will be used to create a packet that will be sent to the server
-     * @param users This is the list of users that will be sent to the server
-     * @param ID This is the type of packet that will be sent to the server
-     */
-    public Packet(List<String> users, ID ID)
-    {
-        this.users = users;
-        this.id = ID;
+
+    public String getSender() {
+        return Sender;
     }
 
-    /**
-     * This is the constructor that will be used to create a packet that will be sent to the server
-     * @param ID This is the type of packet that will be sent to the server
-     */
-    public Packet(ID ID)
-    {
-        this.id = ID;
+    public void setSender(String sender) {
+        Sender = sender;
     }
 
-    /**
-     * This is the constructor that will be used to create a packet that will be sent to the server
-     * @param imageByteArray This is the image that will be sent to the server
-     * @param ID This is the type of packet that will be sent to the server
-     * @param userSent This is the username of the user that sent the packet
-     * @param room This is the room that the user is currently in
-     */
-    public Packet(byte[] imageByteArray, ID ID, String userSent, int room)
-    {
-        this.id = ID;
-        this.userSent = userSent;
-        image = imageByteArray;
-        this.room = room;
-    }
-
-    /**
-     * This is the constructor that will be used to create a packet that will be sent to the server
-     * @param room This is the room that the user is currently in
-     * @param ID This is the type of packet that will be sent to the server
-     * @param userSent This is the username of the user that sent the packet
-     * @param oldRoom This is the old room that the user was in
-     */
-    public Packet(int room, ID ID, String userSent, int oldRoom)
-    {
-        this.room = room;
-        this.id = ID;
-        this.userSent = userSent;
-        this.oldRoom = oldRoom;
-    }
-
-    /**
-     * This is the method that will be used to get the room that the user is currently in
-     * @return This is the room that the user is currently in
-     */
-    public int getRoom()
-    {
-        return room;
-    }
-
-    /**
-     * This is the method that will be used to get the message that was sent to the server
-     * @return This is the message sent to the server
-     */
-    public String getMessage()
-    {
-        return message;
-    }
-
-    /**
-     * This is the method that will be used to get the type of packet that was sent to the server
-     * @return This is the type of packet that was sent to the server
-     */
-    public ID getID()
-    {
+    public ID getId() {
         return id;
     }
 
-    /**
-     * This is the method that will be used to get the list of users that was sent to the server
-     * @return This is the list of users that was sent to the server
-     */
-    public List<String> getUsers()
-    {
-        return users;
+    public List<GameObject> getObjectsOnScreen() {
+        return ObjectsOnScreen;
     }
 
-    /**
-     * This is the method that will be used to get the username of the user that sent the packet
-     * @return This is the username of the user that sent the packet
-     */
-    public String getUserSent()
-    {
-        return userSent;
+    public void setObjectsOnScreen(List<GameObject> objectsOnScreen) {
+        ObjectsOnScreen = objectsOnScreen;
     }
 
+    public boolean isGameState() {
+        return gameState;
+    }
+
+    public void setGameState(boolean gameState) {
+        this.gameState = gameState;
+    }
+
+    public int getCurrentFrame() {
+        return currentFrame;
+    }
+
+    public void setCurrentFrame(int currentFrame) {
+        this.currentFrame = currentFrame;
+    }
 
     /**
      * This is the method that will be used to send a packet to the server
@@ -185,24 +115,6 @@ public abstract class Packet implements Serializable
     public static Packet receiveObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException
     {
         return (Packet) objectInputStream.readObject();
-    }
-
-    /**
-     * This is the method that will be used to get the image that was sent to the server
-     * @return This is the image that was sent to the server
-     */
-    public byte[] getByteData()
-    {
-        return image;
-    }
-
-    /**
-     * This is the method that will be used to get the old room that the user was in
-     * @return This is the old room that the user was in
-     */
-    public int getOldRoom()
-    {
-        return oldRoom;
     }
 
 }

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
-      <change afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client/Packet.java" afterDir="false" />
+    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Packet.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="" />
@@ -65,7 +64,7 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dominichann/IDEProjects/Java/Pong&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dominichann/IdeaProjects/Pong/src/Client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,6 +77,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Client" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -88,6 +90,13 @@
         <option name="nim.task.build.to.cache" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-1.8.0_392-liberica-1.8.0_392-f644763e9732-f07c4aaa" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -102,6 +111,7 @@
       <workItem from="1709226351971" duration="305000" />
       <workItem from="1709265168354" duration="490000" />
       <workItem from="1709265662771" duration="575000" />
+      <workItem from="1709329540506" duration="538000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />
@@ -119,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709217392365</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.">
+      <option name="closed" value="true" />
+      <created>1709300309226</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709300309226</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,13 +147,15 @@
     <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including" />
     <MESSAGE value="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files." />
     <MESSAGE value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
+    <MESSAGE value="Optimize game loop and update rendering function&#10;&#10;The game loop in Game.java has been refactored for better performance and clarity. The rendering function now paints the entire game area green, instead of only a specific rectangle. Workspace settings were also updated in .idea/workspace.xml." />
+    <MESSAGE value="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+          <url>file://$PROJECT_DIR$/src/GameGUI/Paddle.java</url>
           <line>26</line>
           <properties class="Paddle" method="render">
             <option name="EMULATED" value="true" />
@@ -144,7 +164,7 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+          <url>file://$PROJECT_DIR$/src/GameGUI/Paddle.java</url>
           <line>20</line>
           <properties class="Paddle" method="tick">
             <option name="EMULATED" value="true" />
@@ -153,7 +173,7 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+          <url>file://$PROJECT_DIR$/src/GameGUI/Paddle.java</url>
           <line>33</line>
           <properties class="Paddle" method="getBounds">
             <option name="EMULATED" value="true" />
@@ -162,9 +182,15 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+          <url>file://$PROJECT_DIR$/src/GameGUI/Paddle.java</url>
           <line>10</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Client/Packet.java</url>
+          <line>29</line>
+          <properties field="id" class="Client.Packet" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
