@@ -1,3 +1,5 @@
+package GameGUI;
+
 public enum
 ID
 {

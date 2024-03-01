@@ -1,3 +1,5 @@
+package GameGUI;
+
 import java.awt.*;
 import java.util.LinkedList;
 

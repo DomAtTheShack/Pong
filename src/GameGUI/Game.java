@@ -1,7 +1,7 @@
-import javax.swing.*;
+package GameGUI;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 

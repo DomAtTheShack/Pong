@@ -1,3 +1,5 @@
+package GameGUI;
+
 import java.awt.*;
 
 public class Paddle extends GameObject
