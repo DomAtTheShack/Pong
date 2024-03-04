@@ -1,6 +1,9 @@
 package Client;
 
-import javafx.application.Platform;
+
+import GameGUI.Game;
+import GameGUI.GameObject;
+import GameGUI.ID;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -61,7 +64,7 @@ public class Client
             out = new ObjectOutputStream(socket.getOutputStream());
 
             // Send the user information
-            Packet userPacket = new Packet(user, Packet.Type.Message, getRoom());
+            Packet userPacket = new Packet(user, ID.NoUser);
             username = user;
             Packet.sendObjectAsync(out, userPacket);
             connected = true;
@@ -81,29 +84,13 @@ public class Client
                         Packet receivedPacket = Packet.receiveObject(objectInputStream);
                         if (receivedPacket != null)
                         {
-                            if (receivedPacket.getID() == Packet.Type.UserRequest && receivedPacket.getRoom() == room) {
-                                // Handle user list
-                                currentClients = receivedPacket.getUsers();
-                            } else if(receivedPacket.getID() == Packet.Type.RoomChange)
+                            if(receivedPacket.getSender().equals("server"))
                             {
-                                // Handle room change
-                                room = receivedPacket.getRoom();
-                                requestClientList(out);
-                            } else if (receivedPacket.getID() == Packet.Type.Image && receivedPacket.getRoom() == room)
-                            {
-                                // Handle image
-                                Platform.runLater(() -> GUI.openData(receivedPacket.getByteData(), receivedPacket.getUserSent(), "Image"));
-                                GUI.playSound();
-                            } else if(receivedPacket.getID() == Packet.Type.Video && receivedPacket.getRoom() == room)
-                            {
-                                Platform.runLater(() -> GUI.openData(receivedPacket.getByteData(), receivedPacket.getUserSent(), "Video"));
-                                // Handle video
-                                GUI.playSound();
-                            } else if(receivedPacket.getID() == Packet.Type.Message && receivedPacket.getRoom() == room)
-                            {
-                                // Handle regular messages
-                                Platform.runLater(() -> printText(receivedPacket.getMessage()));
-                                GUI.playSound();
+                                List<GameObject> LocalObjects = receivedPacket.getObjectsOnScreen();
+                                for(GameObject X : LocalObjects)
+                                {
+                                    System.out.println(X.getBounds());
+                                }
                             }
                         }
                     }
@@ -113,52 +100,14 @@ public class Client
                     {
                         e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
             }).start();
-            try
-            {
-                requestClientList(out);
-            }catch (NullPointerException e)
-            {
-                requestClientList(out);
-            }
-            new Thread(() ->
-            {
-                while (connected)
-                {
-                    try
-                    {
-                        while (true)
-                        {
-                            Thread.sleep(10000);
-
-                            requestClientList(out);
-                        }
-                    } catch (InterruptedException | IOException | NullPointerException e)
-                    {
-                        //Do nothing so no error is thrown
-                    }
-                }
-            }).start();
-            printText("Don't be like Jorge!");
-            while (true)
-            {
-                // Send the message to the server
-                while (packet != null)
-                {
-                    Packet.sendObjectAsync(out, packet);
-                    packet = null;
-                }
-                Thread.sleep(100);
-            }
         } catch (IOException e)
         {
             connected = false;
             e.printStackTrace();
             if (e.getMessage().contains("Connection Reset") || e.getMessage().contains("Connection refused: connect") || e.getMessage().contains("UnknownHostException:")) {
-                printText("Server Not Available");
+                System.out.println("Server Not Available");
             }
         }
     }
@@ -172,54 +121,6 @@ public class Client
         return connected;
     }
 
-    /**
-     * This is the method that will be used to send a message to the server
-     * @param message This is the message that will be sent to the server
-     */
-    private static void printText(String message)
-    {
-        Platform.runLater(() -> {
-            System.out.println(message);
-        });
-    }
-
-    /**
-     * This is the method that will be used to send a message to the server
-     * @param out This is the output stream that will be used to send the packet to the server
-     * @throws InterruptedException This is the exception that will be thrown if the thread is interrupted
-     * @throws IOException This is the exception that will be thrown if there is an error with the output stream
-     */
-    public static void requestClientList(ObjectOutputStream out) throws InterruptedException, IOException
-    {
-        if (connected)
-        {
-            GUI.clear();
-            final String[] clients = {null};
-            Packet requestPacket = new Packet(Packet.Type.UserRequest);
-            Packet.sendObjectAsync(out, requestPacket);
-
-            new Thread(() ->
-            {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e)
-                {
-                    throw new RuntimeException(e);
-                }
-                for (String x : currentClients)
-                {
-                    clients[0] += (x) + ("\n");
-                }
-                GUI.addText("Room #" + room + "\n");
-                try {
-                    GUI.addText(clients[0]);
-                }catch (NullPointerException e)
-                {
-                    GUI.clear();
-                }
-            }).start();
-        }
-    }
 
     /**
      * This is the method that will be used to send a message to the server
@@ -230,16 +131,14 @@ public class Client
     {
         if (connected)
         {
-            GUI.clear();
-            room = 0;
             connected = false;
             Thread.sleep(100);
             socket.close();
             // Inform the user about the disconnection status
-            printText("Disconnected from the server!");
+            System.out.println("Disconnected from the server!");
         } else
         {
-            printText("Not Connected!");
+            System.out.println("Not Connected!");
         }
     }
 
@@ -252,12 +151,4 @@ public class Client
         return username;
     }
 
-    /**
-     * This is the method that will be used to send a message to the server
-     * @return This is the room that the client is currently in on the server
-     */
-    public static int getRoom()
-    {
-        return room;
-    }
 }

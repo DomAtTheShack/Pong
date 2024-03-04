@@ -17,7 +17,7 @@ import GameGUI.ID;
  * This class implements Serializable so that it can be sent over the network
  * This class is used to send information between the client and the server
  */
-public abstract class Packet implements Serializable
+public class Packet implements Serializable
 {
 
     /**
@@ -49,6 +49,11 @@ public abstract class Packet implements Serializable
         this.ObjectsOnScreen = objectsOnScreen;
         this.currentFrame = currentFrame;
     }
+    public Packet(String sender, ID ID)
+    {
+        Sender = sender;
+        this.id = ID;
+    }
 
 
     public String getSender() {
@@ -59,7 +64,7 @@ public abstract class Packet implements Serializable
         Sender = sender;
     }
 
-    public ID getId() {
+    public ID getID() {
         return id;
     }
 

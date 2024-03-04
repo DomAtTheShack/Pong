@@ -1,0 +1,116 @@
+Index: src/Paddle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.awt.*;\r\n\r\npublic class Paddle extends GameObject\r\n{\r\n\r\n    private int width, height;\r\n\r\n    public Paddle(int x, int y, ID id)\r\n    {\r\n        super(x, y, id);\r\n\r\n    }\r\n\r\n    @Override\r\n    public void tick()\r\n    {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void render(Graphics g)\r\n    {\r\n        g.setColor(Color.BLACK);\r\n        g.fillRect(x, y, width, height);\r\n    }\r\n\r\n    @Override\r\n    public Rectangle getBounds()\r\n     {\r\n        return new Rectangle(x, y, 10, 20);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Paddle.java b/src/Paddle.java
+--- a/src/Paddle.java	(revision 6be684b7636b14e233de5453c9dbb107262523f7)
++++ b/src/Paddle.java	(date 1709229567329)
+@@ -5,10 +5,10 @@
+ 
+     private int width, height;
+ 
+-    public Paddle(int x, int y, ID id)
++    public Paddle(int x, int y, ID id, width, height)
+     {
+         super(x, y, id);
+-
++        this.
+     }
+ 
+     @Override
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" name=\"Changes\" comment=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Paddle.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Game.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/ID.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/ID.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"ca88e30b-1cc6-4bfe-8777-ce83d39c4376\" name=\"Changes by ctebandlienjrk14\" comment=\"\" />\r\n    <list id=\"717ea558-0602-4336-8ac8-c24534c4461f\" name=\"Changes by cteterrazasjaquj450\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;DomAtTheShack&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"da38ef65-5492-4fcb-bab2-1bbacf067d36\" />\r\n        <option name=\"url\" value=\"https://github.com/DomAtTheShack/Pong.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2d2q6C7kjBnnXYYTRTHqI1oogi4\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Game.executor\": \"Debug\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-1.8.0_392-liberica-1.8.0_392-3183f394aec4-4835d0f4\" />\r\n        <option value=\"jdk-1.8.0_402-liberica-1.8.0_402-4caba194b151-4fde626f\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" name=\"Changes\" comment=\"\" />\r\n      <created>1709216344282</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1709216344282</updated>\r\n      <workItem from=\"1709216345285\" duration=\"1827000\" />\r\n      <workItem from=\"1709223502277\" duration=\"2766000\" />\r\n      <workItem from=\"1709226351971\" duration=\"305000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709216434906</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709216434906</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709217392365</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709217392365</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including\" />\r\n    <MESSAGE value=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.\" />\r\n    <MESSAGE value=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Paddle.java</url>\r\n          <line>7</line>\r\n          <properties class=\"Paddle\" method=\"&lt;init&gt;\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Paddle.java</url>\r\n          <line>20</line>\r\n          <properties class=\"Paddle\" method=\"render\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Paddle.java</url>\r\n          <line>14</line>\r\n          <properties class=\"Paddle\" method=\"tick\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Paddle.java</url>\r\n          <line>27</line>\r\n          <properties class=\"Paddle\" method=\"getBounds\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Paddle.java</url>\r\n          <line>9</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6be684b7636b14e233de5453c9dbb107262523f7)
++++ b/.idea/workspace.xml	(date 1709229567360)
+@@ -5,11 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ID.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
+     </list>
+     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
+     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="" />
+@@ -119,7 +115,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1709217392365</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.">
++      <option name="closed" value="true" />
++      <created>1709228911416</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1709228911417</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -131,51 +135,4 @@
+     <MESSAGE value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
+     <option name="LAST_COMMIT_MESSAGE" value="Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration." />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+-          <line>7</line>
+-          <properties class="Paddle" method="&lt;init&gt;">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+-          <line>20</line>
+-          <properties class="Paddle" method="render">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+-          <line>14</line>
+-          <properties class="Paddle" method="tick">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+-          <line>27</line>
+-          <properties class="Paddle" method="getBounds">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="5" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/Paddle.java</url>
+-          <line>9</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+ </project>
+\ No newline at end of file
