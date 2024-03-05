@@ -20,7 +20,7 @@ public class KeyListener extends KeyAdapter {
                 if(key == KeyEvent.VK_S) handler.setDown(true);
 
             }
-            if(tempObject.getId() == ID.P2Pabble){
+            else if(tempObject.getId() == ID.P2Pabble){
                 if(key == KeyEvent.VK_UP) handler.setUp(true);
                 if(key == KeyEvent.VK_DOWN) handler.setDown(true);
 
@@ -31,11 +31,11 @@ public class KeyListener extends KeyAdapter {
         int key = e.getKeyCode();
         for(int i = 0;i < handler.object.size();i++){
             GameObject tempObject = handler.object.get(i);
-            if(tempObject.getId() == ID.P1Pabble || tempObject.getId() == ID.P2Pabble){
+            if(tempObject.getId() == ID.P1Pabble){
                     if(key == KeyEvent.VK_W) handler.setUp(false);
                     if(key == KeyEvent.VK_S) handler.setDown(false);
                 }
-            if(tempObject.getId() == ID.P2Pabble){
+            else if(tempObject.getId() == ID.P2Pabble){
                 if(key == KeyEvent.VK_UP) handler.setUp(false);
                 if(key == KeyEvent.VK_DOWN) handler.setDown(false);
 
