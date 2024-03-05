@@ -22,15 +22,8 @@ public class Game extends Canvas implements Runnable {
         Paddle2 = new Handler();
         this.addKeyListener(new KeyListener(Paddle2));
         this.addKeyListener(new KeyListener(Paddle1));
-        MainHandler.addObject(new Pabble(20, 275, ID.P1Pabble, Paddle1));
-        MainHandler.addObject(new Pabble(945, 275, ID.P2Pabble, Paddle2));
-        for(GameObject X: MainHandler.object)
-        {
-            if(X.getId().equals(ID.P1Pabble) || X.getId().equals(ID.P2Pabble)) {
-                Paddle1.addObject(X);
-                Paddle2.addObject(X);
-            }
-        }
+        Paddle1.addObject(new Pabble(20, 275, ID.P1Pabble, Paddle1));
+        Paddle2.addObject(new Pabble(945, 275, ID.P2Pabble, Paddle2));
 
     }
     public static void main(String[] args) throws IOException
@@ -83,6 +76,8 @@ public class Game extends Canvas implements Runnable {
         g.setColor(new Color(136,202,252));
         g.fillRect(0, 0, getWidth(), getHeight());
         MainHandler.render(g);
+        Paddle2.render(g);
+        Paddle1.render(g);
 
         g.dispose();
         bs.show();
