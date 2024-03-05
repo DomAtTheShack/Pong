@@ -33,8 +33,13 @@ public class KeyListener extends KeyAdapter {
             GameObject tempObject = handler.object.get(i);
             if(tempObject.getId() == ID.P1Pabble || tempObject.getId() == ID.P2Pabble){
                     if(key == KeyEvent.VK_W) handler.setUp(false);
-                    if(key == KeyEvent.VK_A) handler.setLeft(false);
+                    if(key == KeyEvent.VK_S) handler.setDown(false);
                 }
+            if(tempObject.getId() == ID.P2Pabble){
+                if(key == KeyEvent.VK_UP) handler.setUp(false);
+                if(key == KeyEvent.VK_DOWN) handler.setDown(false);
+
+            }
             }
         }
     }

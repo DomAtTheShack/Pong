@@ -17,26 +17,23 @@ public class Pabble extends GameObject
     public void tick() {
         x += velX;
         y += velY;
-        System.out.println(id + " " + handler.isUp());
-        System.out.println(handler.isDown());
-
-        System.out.println(handler.isRight());
-        System.out.println(handler.isLeft());
 
 
         //Movement
-        if(handler.isUp())
+        if (handler.isUp())
             velY = -5;
-        else if(!handler.isDown()) velY = 0;
+        else if (!handler.isDown()) velY = 0;
 
-        if(handler.isDown()) velY = 5;
+        if (handler.isDown()) velY = 5;
         else if (!handler.isUp()) velY = 0;
-
-        if(handler.isRight()) velX = 5;
-        else if (!handler.isLeft()) velX = 0;
-
-        if(handler.isLeft()) velX = -5;
-        else if (!handler.isRight()) velX = 0;
+        if (y <= 10)
+        {
+            velY = 0;
+            y++;
+        }else if(y >= 575) {
+            velY = 0;
+            y--;
+        }
     }
 
     @Override
