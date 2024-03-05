@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable {
     private Handler Paddle2;
 
     public Game() throws IOException {
+
         new Window(1000,700,"Pong", this);
         start();
         MainHandler = new Handler();
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
         Paddle1.addObject(new Pabble(20, 275, ID.P1Pabble, Paddle1));
         Paddle2.addObject(new Pabble(945, 275, ID.P2Pabble, Paddle2));
         MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
+        MainHandler.addObject(new Ball(100,100, ID.Ball));
 
     }
     public static void main(String[] args) throws IOException
