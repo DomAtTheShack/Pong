@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.">
-      <change afterPath="$PROJECT_DIR$/src/GameGUI/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_ctebandlienjrk14_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_ctebandlienjrk14_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_cteterrazasjaquj450_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_cteterrazasjaquj450_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_11_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_11_28_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="fixing hot karls stupid MISTAKES don't forget this">
+      <change afterPath="$PROJECT_DIR$/src/Client/ClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/ID.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="" />
@@ -62,31 +57,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Game.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;liberica-1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dominichann/IdeaProjects/Pong/src/Client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Game.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "liberica-1.8",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ctehannd67/IdeaProjects/Pong/src/Client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ctehannd67\IdeaProjects\Pong\src\Client" />
       <recent name="$PROJECT_DIR$/src/Client" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -184,7 +180,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GameGUI/Pabble.java</url>
-          <line>28</line>
+          <line>32</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -196,6 +192,12 @@
           <url>file://$PROJECT_DIR$/src/GameGUI/KeyListener.java</url>
           <line>16</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Client/Packet.java</url>
+          <line>29</line>
+          <properties field="id" class="Client.Packet" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
