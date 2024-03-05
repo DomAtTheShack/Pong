@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_59_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameGUI/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_ctebandlienjrk14_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_ctebandlienjrk14_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_cteterrazasjaquj450_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_cteterrazasjaquj450_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_11_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_11_28_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/KeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Pabble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Pabble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/ID.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="" />
@@ -182,7 +184,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GameGUI/Pabble.java</url>
-          <line>32</line>
+          <line>28</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -194,12 +196,6 @@
           <url>file://$PROJECT_DIR$/src/GameGUI/KeyListener.java</url>
           <line>16</line>
           <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/Client/Packet.java</url>
-          <line>29</line>
-          <properties field="id" class="Client.Packet" />
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

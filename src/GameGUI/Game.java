@@ -3,6 +3,7 @@ package GameGUI;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
+import java.util.Random;
 
 
 public class Game extends Canvas implements Runnable {
@@ -10,7 +11,7 @@ public class Game extends Canvas implements Runnable {
     private static boolean isRunning = false;
     private static Thread thread;
     public final Handler MainHandler;
-
+    public static byte fps;
     private Handler Paddle1;
     private Handler Paddle2;
 
@@ -24,6 +25,7 @@ public class Game extends Canvas implements Runnable {
         this.addKeyListener(new KeyListener(Paddle1));
         Paddle1.addObject(new Pabble(20, 275, ID.P1Pabble, Paddle1));
         Paddle2.addObject(new Pabble(945, 275, ID.P2Pabble, Paddle2));
+        MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
 
     }
     public static void main(String[] args) throws IOException
@@ -53,7 +55,7 @@ public class Game extends Canvas implements Runnable {
 
             if(System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("Ticks: " + updates + ", FPS:" + frames);
+                fps = (byte) frames;
                 frames = 0;
                 updates = 0;
             }
