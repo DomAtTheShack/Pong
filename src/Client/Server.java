@@ -1,7 +1,5 @@
 package Client;
 
-import jdk.internal.util.xml.impl.Pair;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
