@@ -9,6 +9,8 @@ public class Handler {
 
     LinkedList<GameObject> object = new LinkedList<GameObject>();
 
+    LinkedList<Handler> subHandlers = new LinkedList<>();
+
     public void tick(){
         for(int i = 0;i<object.size();i++){
             GameObject tempObject = object.get(i);
@@ -28,6 +30,35 @@ public class Handler {
     }
     public void removeObject(GameObject tempObject){
         object.remove(tempObject);
+    }
+
+    public void addHandler(Handler handler) {subHandlers.add(handler);}
+    public void removeHandler(Handler handler) {subHandlers.remove(handler);}
+
+    public GameObject getP1Pabble() {
+        GameObject tempObject = null;
+        for (int i = 0; i < subHandlers.size(); i++) {
+            for (GameObject temp : subHandlers.get(i).object) {
+                if (temp.id.equals(ID.P1Pabble)) {
+                    tempObject = temp;
+                    break;
+                }
+            }
+        }
+        return tempObject;
+    }
+    public GameObject getP2Pabble()
+    {
+        GameObject tempObject = null;
+        for (int i = 0; i < subHandlers.size(); i++) {
+            for (GameObject temp : subHandlers.get(i).object) {
+                if (temp.id.equals(ID.P2Pabble)) {
+                    tempObject = temp;
+                    break;
+                }
+            }
+        }
+        return tempObject;
     }
 
     public boolean isUp() {

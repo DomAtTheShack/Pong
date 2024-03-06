@@ -10,7 +10,7 @@ public class Game extends Canvas implements Runnable {
 
     private static boolean isRunning = false;
     private static Thread thread;
-    public final Handler MainHandler;
+    public static Handler MainHandler = new Handler();
     public static byte fps;
     private Handler Paddle1;
     private Handler Paddle2;
@@ -22,10 +22,12 @@ public class Game extends Canvas implements Runnable {
         MainHandler = new Handler();
         Paddle1 = new Handler();
         Paddle2 = new Handler();
+        MainHandler.addHandler(Paddle1);
+        MainHandler.addHandler(Paddle2);
         this.addKeyListener(new KeyListener(Paddle2));
         this.addKeyListener(new KeyListener(Paddle1));
-        Paddle1.addObject(new Pabble(20, 275, ID.P1Pabble, Paddle1));
-        Paddle2.addObject(new Pabble(945, 275, ID.P2Pabble, Paddle2));
+        Paddle1.addObject(new Pabble(30, 275, ID.P1Pabble, Paddle1));
+        Paddle2.addObject(new Pabble(935, 275, ID.P2Pabble, Paddle2));
         MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
         MainHandler.addObject(new Ball(100,100, ID.Ball));
 
