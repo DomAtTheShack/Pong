@@ -69,6 +69,15 @@ public class Handler {
         }
         return null;
     }
+    public Display getP2Score()
+    {
+        for(GameObject tempDisplay: object)
+        {
+            if(tempDisplay.id.equals(ID.P2Score))
+                return (Display) tempDisplay;
+        }
+        return null;
+    }
 
     public boolean isUp() {
         return up;

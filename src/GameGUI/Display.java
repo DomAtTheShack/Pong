@@ -29,10 +29,21 @@ public class Display extends GameObject
     @Override
     public void render(Graphics g) {
 
-        g.setColor(new Color(64,64,102));
-        g.drawString("FPS: " + Display + "\nBall XY: " + Game.MainHandler.object.get(1).getX() + " " + Game.MainHandler.object.get(1).getY()
-                + "\n P1 XY: " + Game.MainHandler.getP1Pabble().getX() + " " + Game.MainHandler.getP1Pabble().getY()
-                + "\n P2 XY: " + Game.MainHandler.getP2Pabble().getX() + " " + Game.MainHandler.getP2Pabble().getY(), x, y);
+        if (id.equals(ID.Display)) {
+
+
+            g.setColor(new Color(64, 64, 102));
+            g.drawString("FPS: " + Display + "\nBall XY: " + Game.MainHandler.object.get(1).getX() + " " + Game.MainHandler.object.get(1).getY()
+                    + "\n P1 XY: " + Game.MainHandler.getP1Pabble().getX() + " " + Game.MainHandler.getP1Pabble().getY()
+                    + "\n P2 XY: " + Game.MainHandler.getP2Pabble().getX() + " " + Game.MainHandler.getP2Pabble().getY(), x, y);
+        }else
+        {
+            g.setColor(new Color(151,217,255));
+            Font normalFont = g.getFont();
+            g.setFont(g.getFont().deriveFont(g.getFont().getSize() * 9f));
+            g.drawString(String.valueOf(score), x, y);
+            g.setFont(normalFont);
+        }
     }
 
     @Override
