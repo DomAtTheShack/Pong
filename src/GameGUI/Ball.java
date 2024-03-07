@@ -61,9 +61,9 @@ public class Ball extends GameObject
             velY *= -1;
         }
         if(x <= 0) {
-            Game.MainHandler.getDisplay().incrementScore();
+            Game.MainHandler.getP2Score().incrementScore();
         } else if(x >= 970) {
-            Game.MainHandler.getDisplay().incrementScore();
+            Game.MainHandler.getP1Score().incrementScore();
         }
     }
     private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR) {
@@ -88,14 +88,6 @@ public class Ball extends GameObject
         g.drawOval(x, y, 20, 20);
         g.setColor(new Color(64,64,102));
         g.fillOval(x,y,20,20);
-
-
-        if(x ==0){
-            score1++;
-//            Display score =
-        }else if(x == 970){
-            score2++;
-        }
 
     }
 
