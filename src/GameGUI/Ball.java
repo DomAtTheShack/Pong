@@ -57,11 +57,9 @@ public class Ball extends GameObject
             velY *= -1;
         }
         if(x <= 0) {
-            x++;
-            velX *= -1;
+            Game.MainHandler.getDisplay().incrementScore();
         } else if(x >= 970) {
-            x--;
-            velX *= -1;
+            Game.MainHandler.getDisplay().incrementScore();
         }
     }
     private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR) {

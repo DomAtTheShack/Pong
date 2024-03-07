@@ -6,8 +6,7 @@ public class Display extends GameObject
 {
     String Display;
 
-    String score1;
-    String score2;
+    int score = 0;
 
     public Display(int x, int y, ID id, String toDisplay) {
         super(x, y, id);
@@ -21,6 +20,10 @@ public class Display extends GameObject
 //        score1 = String.valueOf(Game.scoreP1);
 //        score2 = String.valueOf(Game.scoreP2);
 
+    }
+    public void incrementScore()
+    {
+        score++;
     }
 
     @Override

@@ -60,6 +60,15 @@ public class Handler {
         }
         return tempObject;
     }
+    public Display getDisplay()
+    {
+        for(GameObject tempDisplay: object)
+        {
+            if(tempDisplay.id.equals(ID.Display))
+                return (Display) tempDisplay;
+        }
+        return null;
+    }
 
     public boolean isUp() {
         return up;
