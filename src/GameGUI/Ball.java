@@ -10,6 +10,10 @@ public class Ball extends GameObject
     private Rectangle PrevP1;
     private Rectangle PrevP2;
     private Rectangle PrevBall;
+    int score1;
+
+    int score2;
+//    Display score = new Display(485, 640, )
     public Ball(int x, int y, ID id)
     {
         super(x, y, id);
@@ -85,6 +89,13 @@ public class Ball extends GameObject
         g.setColor(new Color(64,64,102));
         g.fillOval(x,y,20,20);
 
+
+        if(x ==0){
+            score1++;
+//            Display score =
+        }else if(x == 970){
+            score2++;
+        }
 
     }
 
