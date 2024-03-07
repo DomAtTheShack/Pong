@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
@@ -51,6 +52,15 @@
       <ranges>
         <range start1="21" end1="22" start2="21" end2="21" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
         <range start1="42" end1="43" start2="41" end2="42" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/GameGUI/Ball.java">
+      <ranges>
+        <range start1="21" end1="24" start2="21" end2="21" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="26" end1="29" start2="23" end2="23" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="30" end1="43" start2="24" end2="25" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="44" end1="44" start2="26" end2="34" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
+        <range start1="45" end1="45" start2="35" end2="89" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
       </ranges>
     </file>
   </component>
@@ -137,7 +147,7 @@
       <workItem from="1709329540506" duration="538000" />
       <workItem from="1709655494173" duration="378000" />
       <workItem from="1709741873613" duration="7656000" />
-      <workItem from="1709828227875" duration="308000" />
+      <workItem from="1709828227875" duration="2794000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />
@@ -187,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709750503756</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.">
+      <option name="closed" value="true" />
+      <created>1709828611618</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709828611618</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,11 +241,6 @@
           <url>file://$PROJECT_DIR$/src/GameGUI/Display.java</url>
           <line>28</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameGUI/Ball.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

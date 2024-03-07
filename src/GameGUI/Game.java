@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
     @Override
     public void run() {
         this.requestFocus();
-        final int targetFps = 30;
+        final int targetFps = 60;
         final long nanoSecondInterval = 1_000_000_000 / targetFps;
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();

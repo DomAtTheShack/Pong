@@ -19,29 +19,65 @@ public class Ball extends GameObject
 
     @Override
     public void tick() {
-        PrevBall = getBounds();
-        PrevP1 = Game.MainHandler.getP1Pabble().getBounds();
-        PrevP2 = Game.MainHandler.getP2Pabble().getBounds();
         x += velX;
         y += velY;
+
+        handleWallCollisions();
+
+    }
+
+    private void handlePaddleCollision(GameObject paddle, Rectangle paddleR, Rectangle ballR) {
+        if (paddleR.intersects(ballR)) {
+            if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
+                // This is a top collision
+                y--;
+                velY *= -1;
+            } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
+                // This is a bottom collision
+                y++;
+                velY *= -1;
+            } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
+                // This is a left side collision
+                x--;
+                velX *= -1;
+            } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
+                // This is a right side collision
+                x++;
+                velX *= -1;
+            }
+            relocateBall(paddle, paddleR, ballR);
+        }
+    }
+    private void handleWallCollisions() {
         if (y >= 645) {
             y --;
             velY *= -1;
-
-        }else if(y<=0) {
+        } else if(y<=0) {
             y++;
             velY *= -1;
         }
-        if(x<=0)
-        {
+        if(x <= 0) {
             x++;
             velX *= -1;
-        }else if(x>=970)
-        {
+        } else if(x >= 970) {
             x--;
             velX *= -1;
         }
-
+    }
+    private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR) {
+        if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
+            // Top collision
+            y = paddleR.y + paddleR.height;
+        } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
+            // Bottom collision
+            y = paddleR.y - ballR.height;
+        } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
+            // Left side collision
+            x = paddleR.x - ballR.width;
+        } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
+            // Right side collision
+            x = paddleR.x + paddleR.width;
+        }
     }
 
     @Override
