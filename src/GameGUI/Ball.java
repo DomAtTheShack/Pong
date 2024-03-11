@@ -7,10 +7,13 @@ public class Ball extends GameObject
 {
     private final Random BallDevation = new Random();
 
+    private final float MIN = 0.3f;
+    private final float MAX = 4.7f;
+
+    private float randomSlope = (float) MIN + BallDevation.nextFloat() * (MAX - MIN);
     private Rectangle PrevP1;
     private Rectangle PrevP2;
     private Rectangle PrevBall;
-    int score1;
 
     int score2;
 //    Display score = new Display(485, 640, )
