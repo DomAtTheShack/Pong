@@ -15,6 +15,9 @@ public class Game extends Canvas implements Runnable {
     private Handler Paddle1;
     private Handler Paddle2;
 
+    public static int frames = 0;
+    public static int updates = 0;
+
     public Game() throws IOException {
 
         new Window(1000,700,"Pong", this);
@@ -45,8 +48,7 @@ public class Game extends Canvas implements Runnable {
         final long nanoSecondInterval = 1_000_000_000 / targetFps;
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
-        int frames = 0;
-        int updates = 0;
+
 
         while(isRunning) {
             long now = System.nanoTime();

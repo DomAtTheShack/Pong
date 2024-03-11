@@ -3,6 +3,7 @@ package Client;
 
 import GameGUI.Game;
 import GameGUI.GameObject;
+import GameGUI.Handler;
 import GameGUI.ID;
 
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class Client
             out = new ObjectOutputStream(socket.getOutputStream());
 
             // Send the user information
-            Packet userPacket = new Packet(user, ID.NoUser);
+            Packet userPacket = new Packet(user, ID.P2Pabble);
             username = user;
             Packet.sendObjectAsync(out, userPacket);
             connected = true;
@@ -86,8 +87,8 @@ public class Client
                         {
                             if(receivedPacket.getSender().equals("server"))
                             {
-                                List<GameObject> LocalObjects = receivedPacket.getObjectsOnScreen();
-                                for(GameObject X : LocalObjects)
+                                Handler handler = receivedPacket.getHandler();
+                                for(GameObject X : handler.getObjects())
                                 {
                                     System.out.println(X.getBounds());
                                 }

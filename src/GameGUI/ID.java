@@ -5,7 +5,7 @@ ID
 {
     P1Pabble(),
     P2Pabble(),
-    NoUser(),
+    ServerTick(),
     Display(),
     P1Score(),
     P2Score(),

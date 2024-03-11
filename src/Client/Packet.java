@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import GameGUI.GameObject;
+import GameGUI.Handler;
 import GameGUI.ID;
 
 /**
@@ -31,7 +32,7 @@ public class Packet implements Serializable
     /**
      * This is the list of users that will be sent to the server
      */
-    private List<GameObject> ObjectsOnScreen;
+    private Handler handler;
     /**
      * This is the username of the user that sent the packet
      */
@@ -42,11 +43,11 @@ public class Packet implements Serializable
     private int currentFrame;
 
 
-    public Packet(String sender, ID ID, int currentFrame, List<GameObject> objectsOnScreen)
+    public Packet(String sender, ID ID, int currentFrame, Handler MainHandler)
     {
         this.Sender = sender;
         this.id = ID;
-        this.ObjectsOnScreen = objectsOnScreen;
+        this.handler = MainHandler;
         this.currentFrame = currentFrame;
     }
     public Packet(String sender, ID ID)
@@ -68,12 +69,8 @@ public class Packet implements Serializable
         return id;
     }
 
-    public List<GameObject> getObjectsOnScreen() {
-        return ObjectsOnScreen;
-    }
-
-    public void setObjectsOnScreen(List<GameObject> objectsOnScreen) {
-        ObjectsOnScreen = objectsOnScreen;
+    public Handler getHandler() {
+        return handler;
     }
 
     public boolean isGameState() {

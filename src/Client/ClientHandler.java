@@ -1,6 +1,9 @@
 package Client;
 
+import GameGUI.Game;
+import GameGUI.GameObject;
 import GameGUI.ID;
+import GameGUI.Pabble;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,9 +43,15 @@ public class ClientHandler extends Thread {
                 objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
                 Packet packet = Packet.receiveObject(objectInputStream);
                 if (packet != null) {
-                    if (packet.getID() == ID.Ball) {
-                        // Respond with the list of clients
-
+                    if (packet.getID() == ID.P2Pabble) {
+                        int p2X = packet.getHandler().getP2Pabble().getX();
+                        int p2Y = packet.getHandler().getP2Pabble().getY();
+                        Game.MainHandler.getP2Pabble().setX(p2X);
+                        Game.MainHandler.getP2Pabble().setY(p2Y);
+                        sendTick(new Packet("S",
+                                ID.ServerTick,
+                                Game.frames,
+                                Game.MainHandler));
                     }
                 }
 
@@ -54,9 +63,6 @@ public class ClientHandler extends Thread {
         } finally {
             synchronized (clients) {
                 clients.remove(this);
-                for (ClientHandler client : clients) {
-
-                }
                 System.out.println(username + " has left the chat.");
             }
             try {
@@ -68,10 +74,10 @@ public class ClientHandler extends Thread {
     }
 
 
-    public void sendNewBall(String message, int room1) throws IOException {
+    public void sendTick(Packet newTick) throws IOException {
         if (objectOutputStream != null) {
             // Send the Message object using ObjectOutputStream
-           // Packet.sendObjectAsync(objectOutputStream, new Packet(message, Packet.Type.Message, room1));
+           Packet.sendObjectAsync(objectOutputStream, newTick);
         }
     }
    // public void sendPabbleInfo(String )
