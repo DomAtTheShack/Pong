@@ -31,6 +31,14 @@ public class Ball extends GameObject
 
         handleWallCollisions();
 
+        GameObject P1 = Game.MainHandler.getP1Pabble();
+        Rectangle P1R = P1.getBounds();
+        GameObject P2 = Game.MainHandler.getP2Pabble();
+        Rectangle P2R = P2.getBounds();
+        Rectangle BALL = getBounds();
+
+        handlePaddleCollision(P1, P1R, BALL);
+        handlePaddleCollision(P2, P2R, BALL);
     }
 
     private void handlePaddleCollision(GameObject paddle, Rectangle paddleR, Rectangle ballR) {

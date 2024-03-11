@@ -19,7 +19,6 @@ public class Game extends Canvas implements Runnable {
 
         new Window(1000,700,"Pong", this);
         start();
-        MainHandler = new Handler();
         Paddle1 = new Handler();
         Paddle2 = new Handler();
         MainHandler.addHandler(Paddle1);

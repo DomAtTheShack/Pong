@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.">
+    <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
@@ -12,8 +12,6 @@
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="" />
     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Pabble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Pabble.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +29,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -46,23 +43,6 @@
         <option name="url" value="https://github.com/DomAtTheShack/Pong.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/GameGUI/Game.java">
-      <ranges>
-        <range start1="21" end1="22" start2="21" end2="21" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
-        <range start1="42" end1="43" start2="41" end2="42" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/GameGUI/Ball.java">
-      <ranges>
-        <range start1="21" end1="24" start2="21" end2="21" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="26" end1="29" start2="23" end2="23" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="30" end1="43" start2="24" end2="25" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="44" end1="44" start2="26" end2="34" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
-        <range start1="45" end1="45" start2="35" end2="89" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -237,11 +217,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameGUI/Display.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="26" />
