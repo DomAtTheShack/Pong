@@ -37,8 +37,8 @@ public class Handler {
 
     public GameObject getP1Pabble() {
         GameObject tempObject = null;
-        for (int i = 0; i < subHandlers.size(); i++) {
-            for (GameObject temp : subHandlers.get(i).object) {
+        for (Handler subHandler : subHandlers) {
+            for (GameObject temp : subHandler.object) {
                 if (temp.id.equals(ID.P1Pabble)) {
                     tempObject = temp;
                     break;
@@ -47,11 +47,10 @@ public class Handler {
         }
         return tempObject;
     }
-    public GameObject getP2Pabble()
-    {
+    public GameObject getP2Pabble() {
         GameObject tempObject = null;
-        for (int i = 0; i < subHandlers.size(); i++) {
-            for (GameObject temp : subHandlers.get(i).object) {
+        for (Handler subHandler : subHandlers) {
+            for (GameObject temp : subHandler.object) {
                 if (temp.id.equals(ID.P2Pabble)) {
                     tempObject = temp;
                     break;
@@ -60,11 +59,39 @@ public class Handler {
         }
         return tempObject;
     }
-    public Display getDisplay()
+    public void setP1Pabble(GameObject newPabble)
+    {
+        for (Handler subHandler : subHandlers) {
+            for (int h = 0; h < subHandler.object.size(); h++) {
+                if (subHandler.object.get(h).id.equals(ID.P1Pabble)) {
+                    subHandler.object.set(h, newPabble);
+                    break;
+                }
+            }
+        }
+    }
+    public void setP2Pabble(GameObject newPabble)
+    {
+        for (Handler subHandler : subHandlers) {
+            for (int h = 0; h < subHandler.object.size(); h++) {
+                if (subHandler.object.get(h).id.equals(ID.P2Pabble)) {
+                    subHandler.object.set(h, newPabble);
+                    break;
+                }
+            }
+        }
+    }
+
+    public LinkedList<GameObject> getObjects()
+    {
+        return object;
+    }
+
+    public Display getP1Score()
     {
         for(GameObject tempDisplay: object)
         {
-            if(tempDisplay.id.equals(ID.Display))
+            if(tempDisplay.id.equals(ID.P1Score))
                 return (Display) tempDisplay;
         }
         return null;
