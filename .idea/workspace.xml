@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM_[Changes_by_ctebandlienjrk14]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM_[Changes_by_cteterrazasjaquj450]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_ctebandlienjrk14_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_48_PM__Changes_by_cteterrazasjaquj450_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_59_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_29_2024_12_59_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Pabble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Pabble.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
     <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="" />
@@ -52,7 +61,12 @@
         <range start1="30" end1="30" start2="30" end2="38" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
         <range start1="63" end1="64" start2="71" end2="72" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
         <range start1="65" end1="66" start2="73" end2="74" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="91" end1="99" start2="99" end2="99" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/GameGUI/Pabble.java">
+      <ranges>
+        <range start1="36" end1="36" start2="36" end2="38" changelist="717ea558-0602-4336-8ac8-c24534c4461f" />
+        <range start1="51" end1="52" start2="53" end2="54" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
       </ranges>
     </file>
   </component>
@@ -139,7 +153,8 @@
       <workItem from="1709329540506" duration="538000" />
       <workItem from="1709655494173" duration="378000" />
       <workItem from="1709741873613" duration="7656000" />
-      <workItem from="1709828227875" duration="4226000" />
+      <workItem from="1709828227875" duration="5516000" />
+      <workItem from="1710170302087" duration="515000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />
@@ -213,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709832892471</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
+      <option name="closed" value="true" />
+      <created>1709833268055</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709833268055</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,9 +264,9 @@
     <MESSAGE value="Refactor key event condition in KeyListener&#10;&#10;This commit refactors the condition handling key events for the Player1 and Player2 objects in the KeyListener class. By changing `if` to `else if`, the code clearly distinguishes key events related to different players. This change should combat possible key event conflicts between the two players." />
     <MESSAGE value="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles." />
     <MESSAGE value="Increase target FPS and improve collision handling&#10;&#10;The target FPS in the Game class has been increased from 30 to 60 for smoother gameplay. The Ball class has been updated with more detailed collision handling logic, including handling for collisions with walls and paddles, and correct ball repositioning after these collisions." />
-    <MESSAGE value="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system." />
     <MESSAGE value="Changes by cteterrazasjaquj450" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by cteterrazasjaquj450" />
+    <MESSAGE value="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

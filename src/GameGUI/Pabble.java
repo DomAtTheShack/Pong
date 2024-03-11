@@ -49,6 +49,6 @@ public class Pabble extends GameObject
     @Override
     public Rectangle getBounds()
      {
-        return new Rectangle(x, y, 20, 60);
+        return new Rectangle(x-5, y, 20, 70);
     }
 }
