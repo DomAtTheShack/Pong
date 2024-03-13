@@ -81,6 +81,15 @@ public class Handler {
             }
         }
     }
+    public GameObject getBall() {
+        for (GameObject temp : object) {
+           if(temp.id.equals(ID.Ball))
+           {
+               return temp;
+           }
+        }
+        return null;
+    }
 
     public LinkedList<GameObject> getObjects()
     {
