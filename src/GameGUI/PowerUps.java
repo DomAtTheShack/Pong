@@ -10,11 +10,12 @@ public class PowerUps extends MovableObject{
     public final int initialValue;
 
     public final int maxValue;
+    public boolean changeDirection = true;
 
     public PowerUps(int x, int y, int width, int length, ID id) {
         super(x, y, width, length, id);
         initialValue = y;
-         maxValue = initialValue + 20;
+         maxValue = initialValue + 30;
     }
 
     @Override
@@ -22,12 +23,21 @@ public class PowerUps extends MovableObject{
     {
 
 
-        for (int i = initialValue; i <= maxValue; i++) {
-            y++;
-            if(y >= maxValue){
-                for (int j = maxValue; j >= initialValue; j--) {
-                    y--;
-                }
+        if (changeDirection) {
+            // Move downwards until reaching maxValue
+            if (y < maxValue) {
+                y++;
+            } else {
+                // Change direction when reaching maxValue
+                changeDirection = false;
+            }
+        } else {
+            // Move upwards until reaching initialValue
+            if (y > initialValue) {
+                y--;
+            } else {
+                // Change direction when reaching initialValue
+                changeDirection = true;
             }
         }
 
@@ -39,7 +49,7 @@ public class PowerUps extends MovableObject{
         if(getBounds().intersects(Game.MainHandler.getBall().getBounds()))
         {
             Game.MainHandler.removeObject(this);
-            Game.MainHandler.getBall().velX *= 3;
+            Game.MainHandler.getBall().velX *= 2;
 
         }
 

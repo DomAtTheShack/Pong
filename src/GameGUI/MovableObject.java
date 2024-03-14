@@ -6,7 +6,7 @@ public class MovableObject extends GameObject
 {
     protected int width, length;
 
-    public MovableObject(int x, int y, int length, int width, ID id) {
+    public MovableObject(int x, int y,  int width,int length, ID id) {
         super(x, y, id);
         this.length = length;
         this.width = width;
