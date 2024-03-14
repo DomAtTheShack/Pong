@@ -2,21 +2,20 @@ package GameGUI;
 
 import java.awt.*;
 
-public class Pabble extends GameObject
+public class Pabble extends MovableObject
 {
 
     Handler handler;
-    public Pabble(int x, int y, ID id, Handler handler)
+    public Pabble(int x, int y, int width,int length, ID id, Handler handler)
     {
-        super(x, y, id);
+        super(x, y,width,length, id);
         this.handler = handler;
 
     }
 
     @Override
     public void tick() {
-        x += velX;
-        y += velY;
+        super.tick();
 
 
         //Movement
@@ -40,15 +39,15 @@ public class Pabble extends GameObject
     public void render(Graphics g)
     {
         g.setColor(new Color(237,204,111));
-        g.fillRect(x, y, 20, 70);
+        g.fillRect(x, y, width, length);
 
         g.setColor(Color.BLACK); // Border color
-        g.drawRect(x, y, 20, 70);
+        g.drawRect(x, y, width, length);
     }
 
     @Override
     public Rectangle getBounds()
      {
-        return new Rectangle(x-5, y, 20, 70);
+        return new Rectangle(x-5, y, width, length);
     }
 }
