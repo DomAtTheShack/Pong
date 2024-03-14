@@ -14,13 +14,16 @@ public class Game extends Canvas implements Runnable {
     public static byte fps;
     private Handler Paddle1;
     private Handler Paddle2;
+    private Random location = new Random();
+    private long randoNum = 0;
+
 
     public static int frames = 0;
     public static int updates = 0;
 
     public Game() throws IOException {
 
-        new Window(1000,700,"Pong", this);
+        new Window(1000, 700, "Pong", this);
         start();
         Paddle1 = new Handler();
         Paddle2 = new Handler();
@@ -28,16 +31,17 @@ public class Game extends Canvas implements Runnable {
         MainHandler.addHandler(Paddle2);
         this.addKeyListener(new KeyListener(Paddle2));
         this.addKeyListener(new KeyListener(Paddle1));
-        Paddle1.addObject(new Pabble(30, 275, ID.P1Pabble, Paddle1));
-        Paddle2.addObject(new Pabble(935, 275, ID.P2Pabble, Paddle2));
+        Paddle1.addObject(new Pabble(30, 275,20, 70, ID.P1Pabble, Paddle1));
+        Paddle2.addObject(new Pabble(935, 275,20, 70, ID.P2Pabble, Paddle2));
         MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
         MainHandler.addObject(new Display(395, 130, ID.P1Score, "0"));
         MainHandler.addObject(new Display(555, 130, ID.P2Score, "0"));
-        MainHandler.addObject(new Ball(100,100, ID.Ball));
+        MainHandler.addObject(new Ball(100, 100, 20,20,ID.Ball));
+
 
     }
-    public static void main(String[] args) throws IOException
-    {
+
+    public static void main(String[] args) throws IOException {
         new Game();
     }
 
@@ -50,9 +54,9 @@ public class Game extends Canvas implements Runnable {
         long timer = System.currentTimeMillis();
 
 
-        while(isRunning) {
+        while (isRunning) {
             long now = System.nanoTime();
-            if(now - lastTime > nanoSecondInterval) {
+            if (now - lastTime > nanoSecondInterval) {
                 tick();
                 updates++;
                 render();
@@ -60,7 +64,7 @@ public class Game extends Canvas implements Runnable {
                 lastTime = now;
             }
 
-            if(System.currentTimeMillis() - timer > 1000) {
+            if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 fps = (byte) frames;
                 frames = 0;
@@ -77,12 +81,12 @@ public class Game extends Canvas implements Runnable {
 
     public void render() {
         BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null) {
+        if (bs == null) {
             this.createBufferStrategy(3);
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        g.setColor(new Color(136,202,252));
+        g.setColor(new Color(136, 202, 252));
         g.fillRect(0, 0, getWidth(), getHeight());
         MainHandler.render(g);
         Paddle2.render(g);
@@ -91,22 +95,42 @@ public class Game extends Canvas implements Runnable {
         g.dispose();
         bs.show();
     }
-    public void tick()
-    {
+
+    public void tick() {
+        randoNum++;
+        if(randoNum >= PowerUp()){
+            MainHandler.addObject(new PowerUps(location.nextInt(300) + 150,
+                    location.nextInt(250) + 200,
+                    20,20,
+                    ID.SpedPU));
+            randoNum = 0;
+            PowerUp();
+        }
         MainHandler.tick();
         Paddle2.tick();
         Paddle1.tick();
     }
-    private void start(){
+
+    private void start() {
         isRunning = true;
         thread = new Thread(this);
         thread.start();
     }
+
     private void stop() throws InterruptedException {
         isRunning = false;
         thread.join();
     }
+
+
+    private int PowerUp() {
+
+        return location.nextInt(200) + 300;
+
+    }
 }
+
+
 /*
 This function is typically found in games or graphics-intensive programs written in Java, and it's used to render (or draw) graphics onto the screen using something called "double-buffering" or in this case "triple buffering", hence the '3' in createBufferStrategy(3). Buffering is used to prevent screen tearing, an issue where multiple frames are shown in a single screen draw.
 Here's what each line of your function does:

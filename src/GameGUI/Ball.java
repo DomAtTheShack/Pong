@@ -3,7 +3,7 @@ package GameGUI;
 import java.awt.*;
 import java.util.Random;
 
-public class Ball extends GameObject
+public class Ball extends MovableObject
 {
     private final Random BallDevation = new Random();
 
@@ -19,11 +19,11 @@ public class Ball extends GameObject
 
     int score2;
     //    Display score = new Display(485, 640, )
-    public Ball(int x, int y, ID id)
+    public Ball(int x, int y, int width, int length, ID id)
     {
-        super(x, y, id);
-        velX = 5;
-        velY = 5;
+        super(x, y,width, length, id);
+        velX = 7;
+        velY = 7;
     }
 
     @Override
@@ -50,45 +50,27 @@ public class Ball extends GameObject
         if (paddleR.intersects(ballR)) {
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // This is a top collision
-                y -= 3;
-                velY = 2;
-                double randomizeAMT = BallDevation.nextInt(125) + 75;
-                randomizeAMT *= .01;
-                randomizeAMT = velY * randomizeAMT;
-                int randomizeINT = (int) randomizeAMT;
-                velY += -randomizeINT;
+
+
+
+                velY *= -1;
 
 
                 hit = true;
             } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
                 // This is a bottom collision
-                y += 3;
-                velY = 2;
-                double randomizeAMT = BallDevation.nextInt(75) + 125;
-                randomizeAMT *= .01;
-                randomizeAMT = velY * randomizeAMT;
-                int randomizeINT = (int) randomizeAMT;
-                velY *= -randomizeINT;
+
+                velY *= -1;
                 hit = true;
             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
                 // This is a left side collision
-                x -= 3;
-                velX = 2;
-                double randomizeAMT = BallDevation.nextInt(75) + 125;
-                randomizeAMT *= .01;
-                randomizeAMT = velX * randomizeAMT;
-                int randomizeINT = (int) randomizeAMT;
-                velX *= -randomizeINT;
+
+                velY *= -1;
                 hit = true;
             } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
                 // This is a right side collision
-                x++;
-                velX = 2;
-                double randomizeAMT = BallDevation.nextInt(75) + 125;
-                randomizeAMT *= .01;
-                randomizeAMT = velX * randomizeAMT;
-                int randomizeINT = (int) randomizeAMT;
-                velX *= -randomizeINT;
+
+                velY *= -1;
                 hit = true;
             }
             relocateBall(paddle, paddleR, ballR, hit);
@@ -106,8 +88,17 @@ public class Ball extends GameObject
             Game.MainHandler.getP2Score().incrementScore();
             x = 500;
             y = 300;
-            velX *= -1;
-            velY *= -1;
+
+            if(velX >= 0)
+            {
+                velX = -5;
+                velY = -1;
+            }else if(velX <= 0)
+            {
+                velX = 5;
+                velY = 1;
+            }
+
         } else if(x >= 970) {
             Game.MainHandler.getP1Score().incrementScore();
             x = 500;
@@ -139,15 +130,15 @@ public class Ball extends GameObject
     @Override
     public void render(Graphics g) {
 
-        g.drawOval(x, y, 20, 20);
+        g.drawOval(x, y, width, length);
         g.setColor(new Color(64,64,102));
-        g.fillOval(x,y,20,20);
+        g.fillOval(x,y,width,length);
 
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y, 20,20);
+        return new Rectangle(x,y, width,length);
     }
 }
 

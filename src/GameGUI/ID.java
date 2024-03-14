@@ -9,7 +9,8 @@ ID
     Display(),
     P1Score(),
     P2Score(),
-    Ball();
+    Ball(),
+    SpedPU();
 
 
 }

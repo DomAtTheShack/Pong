@@ -1,5 +1,7 @@
 package Client;
 
+import com.sun.corba.se.spi.activation.Server;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -10,14 +12,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Server {
+public class tvServer {
 
     private static final int PORT = 2049;
 
+    public tvServer() {
+    }
 
-    public Server(){}
 
-    //public Ball
+//public Ball
 
 
     public static void main(String[] args) {
