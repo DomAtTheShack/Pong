@@ -31,12 +31,12 @@ public class Game extends Canvas implements Runnable {
         MainHandler.addHandler(Paddle2);
         this.addKeyListener(new KeyListener(Paddle2));
         this.addKeyListener(new KeyListener(Paddle1));
-        Paddle1.addObject(new Pabble(30, 275,20, 70, ID.P1Pabble, Paddle1));
-        Paddle2.addObject(new Pabble(935, 275,20, 70, ID.P2Pabble, Paddle2));
+        Paddle1.addObject(new Pabble(30, 275, 20, 70, ID.P1Pabble, Paddle1));
+        Paddle2.addObject(new Pabble(935, 275, 20, 70, ID.P2Pabble, Paddle2));
         MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
         MainHandler.addObject(new Display(395, 130, ID.P1Score, "0"));
         MainHandler.addObject(new Display(555, 130, ID.P2Score, "0"));
-        MainHandler.addObject(new Ball(100, 100, 20,20,ID.Ball));
+        MainHandler.addObject(new Ball(100, 100, 20, 20, ID.Ball));
 
 
     }
@@ -98,10 +98,10 @@ public class Game extends Canvas implements Runnable {
 
     public void tick() {
         randoNum++;
-        if(randoNum >= PowerUp()){
+        if (randoNum >= PowerUp()) {
             MainHandler.addObject(new PowerUps(location.nextInt(300) + 150,
                     location.nextInt(250) + 200,
-                    20,20,
+                    20, 20,
                     ID.SpedPU));
             randoNum = 0;
             PowerUp();

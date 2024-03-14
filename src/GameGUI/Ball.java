@@ -3,14 +3,15 @@ package GameGUI;
 import java.awt.*;
 import java.util.Random;
 
+
 public class Ball extends MovableObject
 {
     private final Random BallDevation = new Random();
+    int randomNum = BallDevation.nextInt(6) + 1;
 
-    private final float MIN = 0.3f;
-    private final float MAX = 4.7f;
 
-    private float randomSlope = (float) MIN + BallDevation.nextFloat() * (MAX - MIN);
+
+
     private Rectangle PrevP1;
     private Rectangle PrevP2;
     private Rectangle PrevBall;
@@ -50,7 +51,7 @@ public class Ball extends MovableObject
         if (paddleR.intersects(ballR)) {
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // This is a top collision
-
+                y--;
 
 
                 velY *= -1;
@@ -59,18 +60,18 @@ public class Ball extends MovableObject
                 hit = true;
             } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
                 // This is a bottom collision
-
+                y++;
                 velY *= -1;
                 hit = true;
             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
                 // This is a left side collision
 
-                velY *= -1;
+                velX *= -1;
                 hit = true;
             } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
                 // This is a right side collision
 
-                velY *= -1;
+                velX *= -1;
                 hit = true;
             }
             relocateBall(paddle, paddleR, ballR, hit);
@@ -88,23 +89,16 @@ public class Ball extends MovableObject
             Game.MainHandler.getP2Score().incrementScore();
             x = 500;
             y = 300;
+            velX = 5;
+            velY = 5;
 
-            if(velX >= 0)
-            {
-                velX = -5;
-                velY = -1;
-            }else if(velX <= 0)
-            {
-                velX = 5;
-                velY = 1;
-            }
 
         } else if(x >= 970) {
             Game.MainHandler.getP1Score().incrementScore();
             x = 500;
             y = 300;
-            velX *= -1;
-            velY *= -1;
+            velX = -5;
+            velY = -5;
         }
     }
     private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR, boolean hit) {

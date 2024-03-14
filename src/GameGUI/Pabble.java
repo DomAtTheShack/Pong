@@ -48,6 +48,6 @@ public class Pabble extends MovableObject
     @Override
     public Rectangle getBounds()
      {
-        return new Rectangle(x-5, y, width, length);
+        return new Rectangle(x, y, width, length);
     }
 }
