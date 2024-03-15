@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Pabble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Pabble.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
-    <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="Changes by ctehannd67" />
+    <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="Changes by ctehannd67">
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
+    </list>
     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +42,18 @@
         <option name="url" value="https://github.com/DomAtTheShack/Pong.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/GameGUI/Game.java">
+      <ranges>
+        <range start1="17" end1="17" start2="17" end2="20" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="23" end1="24" start2="26" end2="27" changelist="1687aa9a-6241-4a0c-8b4c-f547014e03db" />
+        <range start1="101" end1="103" start2="104" end2="106" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="119" end1="120" start2="122" end2="124" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="125" end1="126" start2="129" end2="131" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+        <range start1="127" end1="128" start2="132" end2="133" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -128,6 +140,7 @@
       <workItem from="1709828227875" duration="2794000" />
       <workItem from="1710343531310" duration="1046000" />
       <workItem from="1710430159798" duration="5641000" />
+      <workItem from="1710516055923" duration="1257000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />

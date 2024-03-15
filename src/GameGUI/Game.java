@@ -15,6 +15,9 @@ public class Game extends Canvas implements Runnable {
     private Handler Paddle1;
     private Handler Paddle2;
     private Random location = new Random();
+
+    private Random time = new Random();
+
     private long randoNum = 0;
 
 
@@ -99,8 +102,8 @@ public class Game extends Canvas implements Runnable {
     public void tick() {
         randoNum++;
         if (randoNum >= PowerUp()) {
-            MainHandler.addObject(new PowerUps(location.nextInt(300) + 150,
-                    location.nextInt(250) + 200,
+            MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,
+                    location.nextInt(400) + 150,
                     20, 20,
                     ID.SpedPU));
             randoNum = 0;
@@ -117,15 +120,17 @@ public class Game extends Canvas implements Runnable {
         thread.start();
     }
 
-    private void stop() throws InterruptedException {
+    private void stop() throws InterruptedException
+    {
         isRunning = false;
         thread.join();
     }
 
 
-    private int PowerUp() {
+    private int PowerUp()
+    {
 
-        return location.nextInt(200) + 300;
+        return time.nextInt(60) + 0;
 
     }
 }
