@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_13_2024_11_48_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_13_2024_11_48_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_4_2024_11_18_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/MovableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/MovableObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameGUI/Pabble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Pabble.java" afterDir="false" />
     </list>
     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
-    <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="Changes by ctehannd67">
-      <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
-    </list>
+    <list id="1687aa9a-6241-4a0c-8b4c-f547014e03db" name="Changes by ctehannd67" comment="" />
     <list id="717ea558-0602-4336-8ac8-c24534c4461f" name="Changes by cteterrazasjaquj450" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -42,18 +48,6 @@
         <option name="url" value="https://github.com/DomAtTheShack/Pong.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/GameGUI/Game.java">
-      <ranges>
-        <range start1="17" end1="17" start2="17" end2="20" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="23" end1="24" start2="26" end2="27" changelist="1687aa9a-6241-4a0c-8b4c-f547014e03db" />
-        <range start1="101" end1="103" start2="104" end2="106" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="119" end1="120" start2="122" end2="124" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="125" end1="126" start2="129" end2="131" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-        <range start1="127" end1="128" start2="132" end2="133" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -86,9 +80,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -117,6 +112,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-1.8.0_392-liberica-1.8.0_392-3183f394aec4-4835d0f4" />
         <option value="jdk-1.8.0_402-liberica-1.8.0_402-4caba194b151-4fde626f" />
       </set>
     </attachedChunks>
@@ -139,8 +135,9 @@
       <workItem from="1709741873613" duration="7656000" />
       <workItem from="1709828227875" duration="2794000" />
       <workItem from="1710343531310" duration="1046000" />
-      <workItem from="1710430159798" duration="5641000" />
-      <workItem from="1710516055923" duration="1257000" />
+      <workItem from="1710433457170" duration="1000" />
+      <workItem from="1710516100784" duration="687000" />
+      <workItem from="1710517697403" duration="5960000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
       <option name="closed" value="true" />
@@ -198,31 +195,7 @@
       <option name="project" value="LOCAL" />
       <updated>1709828611618</updated>
     </task>
-    <task id="LOCAL-00008" summary="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
-      <option name="closed" value="true" />
-      <created>1710430203300</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1710430203300</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Changes by ctehannd67">
-      <option name="closed" value="true" />
-      <created>1710430644984</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1710430644984</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
-      <option name="closed" value="true" />
-      <created>1710433141085</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1710433141085</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,9 +222,7 @@
     <MESSAGE value="Add server and client handler classes&#10;&#10;This commit introduces two new classes: Server.java and ClientHandler.java under the Client package. These additions strengthen client-server communication by providing functionality for message handling, data transmission, and connection management. Changes were also made to the workspace.xml configuration file." />
     <MESSAGE value="Refactor key event condition in KeyListener&#10;&#10;This commit refactors the condition handling key events for the Player1 and Player2 objects in the KeyListener class. By changing `if` to `else if`, the code clearly distinguishes key events related to different players. This change should combat possible key event conflicts between the two players." />
     <MESSAGE value="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles." />
-    <MESSAGE value="Changes by ctehannd67" />
-    <MESSAGE value="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -260,6 +231,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="26" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GameGUI/Game.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

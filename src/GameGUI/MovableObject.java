@@ -13,7 +13,7 @@ public class MovableObject extends GameObject
     }
 
     @Override
-    public void tick() {
+    public void tick() throws InterruptedException {
         x += velX;
         y += velY;
     }

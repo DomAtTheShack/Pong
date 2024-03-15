@@ -16,10 +16,10 @@ public class Ball extends MovableObject
     private Rectangle PrevP2;
     private Rectangle PrevBall;
 
+    private static final int bound = 6;
+    private static final int velXCap = 12;
+    private static final int velYCap = 8;
 
-
-    int score2;
-    //    Display score = new Display(485, 640, )
     public Ball(int x, int y, int width, int length, ID id)
     {
         super(x, y,width, length, id);
@@ -28,8 +28,7 @@ public class Ball extends MovableObject
     }
 
     @Override
-    public void tick()
-    {
+    public void tick() throws InterruptedException {
         x += velX;
         y += velY;
         BallDevation.nextInt(6);
@@ -52,11 +51,7 @@ public class Ball extends MovableObject
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // This is a top collision
                 y--;
-
-
                 velY *= -1;
-
-
                 hit = true;
             } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
                 // This is a bottom collision
@@ -65,19 +60,19 @@ public class Ball extends MovableObject
                 hit = true;
             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
                 // This is a left side collision
-
+                x--;
                 velX *= -1;
                 hit = true;
             } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
                 // This is a right side collision
-
+                x++;
                 velX *= -1;
                 hit = true;
             }
             relocateBall(paddle, paddleR, ballR, hit);
         }
     }
-    private void handleWallCollisions() {
+    private void handleWallCollisions() throws InterruptedException {
         if (y >= 645) {
             y --;
             velY *= -1;
@@ -99,6 +94,7 @@ public class Ball extends MovableObject
             y = 300;
             velX = -5;
             velY = -5;
+
         }
     }
     private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR, boolean hit) {
@@ -106,18 +102,49 @@ public class Ball extends MovableObject
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // Top collision
                 y = paddleR.y + paddleR.height;
-                velX *= -1;
+                velY += BallDevation.nextInt(bound) + 3; // Add deviation to velY
             } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
                 // Bottom collision
                 y = paddleR.y - ballR.height;
-
+                velY += -(BallDevation.nextInt(bound) + 3); // Add deviation to velY (negative since it's moving upwards)
             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
                 // Left side collision
                 x = paddleR.x - ballR.width;
+                velX += -(BallDevation.nextInt(bound) + 3); // Add deviation to velX (negative since it's moving left)
             } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
                 // Right side collision
                 x = paddleR.x + paddleR.width;
+                velX += BallDevation.nextInt(bound) + 3; // Add deviation to velX
             }
+            int tempSpeed = BallDevation.nextInt(2) + 1;
+            boolean slow = BallDevation.nextInt(10) > 6;
+            int directionFactor;
+            if (velX < 0) {
+                directionFactor = -1;
+            } else {
+                directionFactor = 1;
+            }
+            if (slow) {
+                velX -= directionFactor * tempSpeed;
+                velY -= directionFactor * tempSpeed;
+
+            } else {
+                velX += directionFactor * tempSpeed;
+                velY += directionFactor * tempSpeed;
+            }
+            if(velX > velXCap)
+            {
+                velX = velXCap;
+            }else{
+                velX = -velXCap;
+            }
+            if(velY > velYCap)
+            {
+                velY = velYCap;
+            }else{
+                velY = -velYCap;
+            }
+
         }
     }
 
@@ -130,9 +157,5 @@ public class Ball extends MovableObject
 
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(x,y, width,length);
-    }
 }
 

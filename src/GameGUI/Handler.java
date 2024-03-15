@@ -11,7 +11,7 @@ public class Handler {
 
     LinkedList<Handler> subHandlers = new LinkedList<>();
 
-    public void tick(){
+    public void tick() throws InterruptedException {
         for(int i = 0;i<object.size();i++){
             GameObject tempObject = object.get(i);
 

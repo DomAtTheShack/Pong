@@ -14,7 +14,7 @@ public abstract class GameObject {
         this.y = y;
         this.id = id;
     }
-    public abstract void tick();
+    public abstract void tick() throws InterruptedException;
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();
 

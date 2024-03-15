@@ -1,5 +1,6 @@
 package GameGUI;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
@@ -34,17 +35,22 @@ public class Game extends Canvas implements Runnable {
         MainHandler.addHandler(Paddle2);
         this.addKeyListener(new KeyListener(Paddle2));
         this.addKeyListener(new KeyListener(Paddle1));
-        Paddle1.addObject(new Pabble(30, 275, 20, 70, ID.P1Pabble, Paddle1));
-        Paddle2.addObject(new Pabble(935, 275, 20, 70, ID.P2Pabble, Paddle2));
+        Paddle1.addObject(new Pabble(30, 275, 20, 90, ID.P1Pabble, Paddle1));
+        Paddle2.addObject(new Pabble(935, 275, 20, 90, ID.P2Pabble, Paddle2));
         MainHandler.addObject(new Display(475, 10, ID.Display, "N/A"));
         MainHandler.addObject(new Display(395, 130, ID.P1Score, "0"));
         MainHandler.addObject(new Display(555, 130, ID.P2Score, "0"));
         MainHandler.addObject(new Ball(100, 100, 20, 20, ID.Ball));
-
-
     }
 
     public static void main(String[] args) throws IOException {
+        boolean InMenu = true;
+        do {
+            JFrame frame = new JFrame("Menu");
+            frame.setSize(600, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        }while (InMenu);
         new Game();
     }
 
@@ -60,7 +66,11 @@ public class Game extends Canvas implements Runnable {
         while (isRunning) {
             long now = System.nanoTime();
             if (now - lastTime > nanoSecondInterval) {
-                tick();
+                try {
+                    tick();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 updates++;
                 render();
                 frames++;
@@ -99,7 +109,15 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    public void tick() {
+    public void tick() throws InterruptedException {
+        if(Game.MainHandler.getP1Score().score == 10)
+        {
+            GameWin(true);
+        }
+        if(Game.MainHandler.getP2Score().score == 10)
+        {
+            GameWin(false);
+        }
         randoNum++;
         if (randoNum >= PowerUp()) {
             MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,
@@ -120,7 +138,7 @@ public class Game extends Canvas implements Runnable {
         thread.start();
     }
 
-    private void stop() throws InterruptedException
+    private static void stop() throws InterruptedException
     {
         isRunning = false;
         thread.join();
@@ -130,8 +148,22 @@ public class Game extends Canvas implements Runnable {
     private int PowerUp()
     {
 
-        return time.nextInt(60) + 0;
+        return time.nextInt(250) + 300;
 
+    }
+
+    private static void GameWin(boolean P1Win) throws InterruptedException {
+        JFrame frame = new JFrame("Winner");
+        frame.setSize(300, 200); // Set width and height as needed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        if(P1Win)
+        {
+            JOptionPane.showMessageDialog(frame,"Player 1 wins the game with a lead of " + (MainHandler.getP1Score().score - MainHandler.getP2Score().score)  + " points!");
+        }else {
+            JOptionPane.showMessageDialog(frame,"Player 2 wins the game with a lead of " + (MainHandler.getP2Score().score - MainHandler.getP1Score().score)  + " points!");
+        }
+        System.exit(0);
+        stop();
     }
 }
 

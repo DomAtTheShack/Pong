@@ -14,16 +14,16 @@ public class Pabble extends MovableObject
     }
 
     @Override
-    public void tick() {
+    public void tick() throws InterruptedException {
         super.tick();
 
 
         //Movement
         if (handler.isUp())
-            velY = -5;
+            velY = -8;
         else if (!handler.isDown()) velY = 0;
 
-        if (handler.isDown()) velY = 5;
+        if (handler.isDown()) velY = 8;
         else if (!handler.isUp()) velY = 0;
         if (y <= 10)
         {
@@ -48,6 +48,6 @@ public class Pabble extends MovableObject
     @Override
     public Rectangle getBounds()
      {
-        return new Rectangle(x, y, width, length);
+        return new Rectangle(x, y - 5, width, length + 10);
     }
 }
