@@ -8,6 +8,7 @@ public class PowerUps extends MovableObject{
 
     Random poop = new Random();
     public final int initialValue;
+    public  final int BALL_CAP = 4;
 
     public final int maxValue;
     public boolean changeDirection = true;
@@ -49,7 +50,7 @@ public class PowerUps extends MovableObject{
         if(getBounds().intersects(Game.MainHandler.getBall().getBounds()))
         {
             Game.MainHandler.removeObject(this);
-            Game.MainHandler.getBall().velX *= 2;
+            Game.MainHandler.getBall().velX *= 2.5;
 
         }
 

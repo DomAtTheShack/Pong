@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Pong_jar</output-path>
     <root id="archive" name="Pong.jar">
       <element id="module-output" name="Pong" />
+      <element id="file-copy" path="$PROJECT_DIR$/resources/test.gif" />
     </root>
   </artifact>
 </component>

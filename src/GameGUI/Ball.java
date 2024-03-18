@@ -19,6 +19,11 @@ public class Ball extends MovableObject
     private static final int bound = 6;
     private static final int velXCap = 12;
     private static final int velYCap = 8;
+    private static final int velYMinCap = 8;
+    private  static int waitForBall = 100;
+    private boolean waitFor = false;
+    private boolean p2Lost;
+
 
     public Ball(int x, int y, int width, int length, ID id)
     {
@@ -47,6 +52,7 @@ public class Ball extends MovableObject
 
     private void handlePabbleCollision(GameObject paddle, Rectangle paddleR, Rectangle ballR) {
         boolean hit = false;
+
         if (paddleR.intersects(ballR)) {
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // This is a top collision
@@ -102,11 +108,11 @@ public class Ball extends MovableObject
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // Top collision
                 y = paddleR.y + paddleR.height;
-                velY += BallDevation.nextInt(bound) + 3; // Add deviation to velY
+                velY += BallDevation.nextInt(bound) + 1; // Add deviation to velY
             } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {
                 // Bottom collision
                 y = paddleR.y - ballR.height;
-                velY += -(BallDevation.nextInt(bound) + 3); // Add deviation to velY (negative since it's moving upwards)
+                velY += -(BallDevation.nextInt(bound) + 1); // Add deviation to velY (negative since it's moving upwards)
             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
                 // Left side collision
                 x = paddleR.x - ballR.width;
