@@ -45,11 +45,12 @@ public class Game extends Canvas implements Runnable {
 
     public static void main(String[] args) throws IOException {
         boolean InMenu = true;
+        JFrame frame = new JFrame("Menu");
+        frame.setSize(600, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
         do {
-            JFrame frame = new JFrame("Menu");
-            frame.setSize(600, 300);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
+
         }while (InMenu);
         new Game();
     }
