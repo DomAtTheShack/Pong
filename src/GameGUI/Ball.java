@@ -161,6 +161,17 @@ public class Ball extends MovableObject
             velY = 0;
             waitFor = true;
             p2Lost = false;
+            int toRemove = -1;
+            for(int i = 0; i < Game.MainHandler.object.size(); i++)
+            {
+                if(Game.MainHandler.object.get(i).getId().equals(ID.SpedPU)) {
+                    toRemove = i;
+
+                }
+            }
+            if(toRemove != -1)
+                Game.MainHandler.object.remove(toRemove);
+            Game.PUNum = 0;
 
         } else if(x >= 970) {
             Game.MainHandler.getP1Score().incrementScore();
@@ -170,6 +181,17 @@ public class Ball extends MovableObject
             velY = 0;
             waitFor = true;
             p2Lost = true;
+            int toRemove = -1;
+            for(int i = 0; i < Game.MainHandler.object.size(); i++)
+            {
+                if(Game.MainHandler.object.get(i).getId().equals(ID.SpedPU)) {
+                    toRemove = i;
+
+                }
+            }
+            if(toRemove != -1)
+                Game.MainHandler.object.remove(toRemove);
+            Game.PUNum = 0;
         }
             if(waitFor)
             {

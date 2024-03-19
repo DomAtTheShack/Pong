@@ -1,0 +1,276 @@
+Index: src/GameGUI/Ball.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GameGUI;\r\n\r\nimport java.awt.*;\r\nimport java.util.Random;\r\n\r\n\r\npublic class Ball extends MovableObject\r\n{\r\n    private final Random BallDevation = new Random();\r\n    int randomNum = BallDevation.nextInt(6) + 1;\r\n\r\n\r\n\r\n\r\n    private Rectangle PrevP1;\r\n    private Rectangle PrevP2;\r\n    private Rectangle PrevBall;\r\n\r\n\r\n\r\n    int score2;\r\n    //    Display score = new Display(485, 640, )\r\n    public Ball(int x, int y, int width, int length, ID id)\r\n    {\r\n        super(x, y,width, length, id);\r\n        velX = 7;\r\n        velY = 7;\r\n    }\r\n\r\n    @Override\r\n    public void tick()\r\n    {\r\n        x += velX;\r\n        y += velY;\r\n        BallDevation.nextInt(6);\r\n\r\n        handleWallCollisions();\r\n\r\n        GameObject P1 = Game.MainHandler.getP1Pabble();\r\n        Rectangle P1R = P1.getBounds();\r\n        GameObject P2 = Game.MainHandler.getP2Pabble();\r\n        Rectangle P2R = P2.getBounds();\r\n        Rectangle BALL = getBounds();\r\n\r\n        handlePabbleCollision(P1, P1R, BALL);\r\n        handlePabbleCollision(P2, P2R, BALL);\r\n    }\r\n\r\n    private void handlePabbleCollision(GameObject paddle, Rectangle paddleR, Rectangle ballR) {\r\n        boolean hit = false;\r\n        if (paddleR.intersects(ballR)) {\r\n            if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {\r\n                // This is a top collision\r\n                y--;\r\n\r\n\r\n                velY *= -1;\r\n\r\n\r\n                hit = true;\r\n            } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {\r\n                // This is a bottom collision\r\n                y++;\r\n                velY *= -1;\r\n                hit = true;\r\n            } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {\r\n                // This is a left side collision\r\n\r\n                velX *= -1;\r\n                hit = true;\r\n            } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {\r\n                // This is a right side collision\r\n\r\n                velX *= -1;\r\n                hit = true;\r\n            }\r\n            relocateBall(paddle, paddleR, ballR, hit);\r\n        }\r\n    }\r\n    private void handleWallCollisions() {\r\n        if (y >= 645) {\r\n            y --;\r\n            velY *= -1;\r\n        } else if(y<=0) {\r\n            y++;\r\n            velY *= -1;\r\n        }\r\n        if(x <= 0) {\r\n            Game.MainHandler.getP2Score().incrementScore();\r\n            x = 500;\r\n            y = 300;\r\n            velX = 5;\r\n            velY = 5;\r\n\r\n\r\n        } else if(x >= 970) {\r\n            Game.MainHandler.getP1Score().incrementScore();\r\n            x = 500;\r\n            y = 300;\r\n            velX = -5;\r\n            velY = -5;\r\n        }\r\n    }\r\n    private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR, boolean hit) {\r\n        if(hit) {\r\n            if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {\r\n                // Top collision\r\n                y = paddleR.y + paddleR.height;\r\n                velX *= -1;\r\n            } else if (ballR.y <= paddleR.y && ballR.y + ballR.height >= paddleR.y) {\r\n                // Bottom collision\r\n                y = paddleR.y - ballR.height;\r\n\r\n            } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {\r\n                // Left side collision\r\n                x = paddleR.x - ballR.width;\r\n            } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {\r\n                // Right side collision\r\n                x = paddleR.x + paddleR.width;\r\n            }\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void render(Graphics g) {\r\n\r\n        g.drawOval(x, y, width, length);\r\n        g.setColor(new Color(64,64,102));\r\n        g.fillOval(x,y,width,length);\r\n\r\n    }\r\n\r\n    @Override\r\n    public Rectangle getBounds() {\r\n        return new Rectangle(x,y, width,length);\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GameGUI/Ball.java b/src/GameGUI/Ball.java
+--- a/src/GameGUI/Ball.java	(revision a78b5a8b21cbaa5097badad4ecf0ccefc14f938f)
++++ b/src/GameGUI/Ball.java	(date 1710521643964)
+@@ -7,7 +7,10 @@
+ public class Ball extends MovableObject
+ {
+     private final Random BallDevation = new Random();
+-    int randomNum = BallDevation.nextInt(6) + 1;
++    int randomNum;
++
++    boolean randomBool;
++
+ 
+ 
+ 
+@@ -23,16 +26,20 @@
+     public Ball(int x, int y, int width, int length, ID id)
+     {
+         super(x, y,width, length, id);
+-        velX = 7;
+-        velY = 7;
++        velX = 6;
++        velY = 6;
+     }
++
++
+ 
+     @Override
+     public void tick()
+     {
++
+         x += velX;
+         y += velY;
+-        BallDevation.nextInt(6);
++        randomNum = BallDevation.nextInt(4) + 1;
++        randomBool = BallDevation.nextBoolean();
+ 
+         handleWallCollisions();
+ 
+@@ -54,6 +61,7 @@
+                 y--;
+ 
+ 
++
+                 velY *= -1;
+ 
+ 
+@@ -65,13 +73,78 @@
+                 hit = true;
+             } else if (ballR.x + ballR.width >= paddleR.x && ballR.x <= paddleR.x) {
+                 // This is a left side collision
++                switch (randomNum){
++                    case 1:
++                        if (randomBool) {
++                            velX = 3;
++                        } else{
++                            velX = 2;
++                        }
++                        break;
++                    case 2:
++                        if(randomBool){
++                            velY = 3;
++                        }else{
++                            velY = 2;
++                        }
++                    case 3:
++                        if(randomBool){
++                            velX = 4;
++                        }else{
++                            velX = 5;
++                        }
++                    case 4:
++                        if(randomBool){
++                            velY = 4;
++                        }else{
++                            velY = 5;
++                        }
+ 
++                }
+                 velX *= -1;
+                 hit = true;
+             } else if (ballR.x <= paddleR.x + paddleR.width && ballR.x + ballR.width >= paddleR.x + paddleR.width) {
+                 // This is a right side collision
+ 
+-                velX *= -1;
++                switch (randomNum){
++                    case 1:
++                        if (randomBool) {
++                            velX = 3;
++                            velX *= -1;
++                        } else{
++                            velX = 2;
++                            velX *= -1;
++                        }
++                        break;
++                    case 2:
++                        if(randomBool){
++                            velY = 3;
++                            velX *= -1;
++                        }else{
++                            velY = 2;
++                            velX *= -1;
++                        }
++                    case 3:
++                        if(randomBool){
++                            velX = 4;
++                            velX *= -1;
++                        }else{
++                            velX = 5;
++                            velX *= -1;
++                        }
++                    case 4:
++                        if(randomBool){
++                            velY = 4;
++                            velX *= -1;
++                        }else{
++                            velY = 5;
++                            velX *= -1;
++                        }
++
++                }
++
++
++
+                 hit = true;
+             }
+             relocateBall(paddle, paddleR, ballR, hit);
+@@ -91,8 +164,6 @@
+             y = 300;
+             velX = 5;
+             velY = 5;
+-
+-
+         } else if(x >= 970) {
+             Game.MainHandler.getP1Score().incrementScore();
+             x = 500;
+@@ -134,5 +205,7 @@
+     public Rectangle getBounds() {
+         return new Rectangle(x,y, width,length);
+     }
++
++
+ }
+ 
+Index: src/GameGUI/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GameGUI;\r\n\r\nimport java.awt.*;\r\nimport java.awt.image.BufferStrategy;\r\nimport java.io.IOException;\r\nimport java.util.Random;\r\n\r\n\r\npublic class Game extends Canvas implements Runnable {\r\n\r\n    private static boolean isRunning = false;\r\n    private static Thread thread;\r\n    public static Handler MainHandler = new Handler();\r\n    public static byte fps;\r\n    private Handler Paddle1;\r\n    private Handler Paddle2;\r\n    private Random location = new Random();\r\n\r\n    private Random time = new Random();\r\n\r\n    private long randoNum = 0;\r\n\r\n\r\n    public static int frames = 0;\r\n    public static int updates = 0;\r\n\r\n    public Game() throws IOException {\r\n\r\n        new Window(1000, 700, \"Pong\", this);\r\n        start();\r\n        Paddle1 = new Handler();\r\n        Paddle2 = new Handler();\r\n        MainHandler.addHandler(Paddle1);\r\n        MainHandler.addHandler(Paddle2);\r\n        this.addKeyListener(new KeyListener(Paddle2));\r\n        this.addKeyListener(new KeyListener(Paddle1));\r\n        Paddle1.addObject(new Pabble(30, 275, 20, 70, ID.P1Pabble, Paddle1));\r\n        Paddle2.addObject(new Pabble(935, 275, 20, 70, ID.P2Pabble, Paddle2));\r\n        MainHandler.addObject(new Display(475, 10, ID.Display, \"N/A\"));\r\n        MainHandler.addObject(new Display(395, 130, ID.P1Score, \"0\"));\r\n        MainHandler.addObject(new Display(555, 130, ID.P2Score, \"0\"));\r\n        MainHandler.addObject(new Ball(100, 100, 20, 20, ID.Ball));\r\n\r\n\r\n    }\r\n\r\n    public static void main(String[] args) throws IOException {\r\n        new Game();\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n        this.requestFocus();\r\n        final int targetFps = 60;\r\n        final long nanoSecondInterval = 1_000_000_000 / targetFps;\r\n        long lastTime = System.nanoTime();\r\n        long timer = System.currentTimeMillis();\r\n\r\n\r\n        while (isRunning) {\r\n            long now = System.nanoTime();\r\n            if (now - lastTime > nanoSecondInterval) {\r\n                tick();\r\n                updates++;\r\n                render();\r\n                frames++;\r\n                lastTime = now;\r\n            }\r\n\r\n            if (System.currentTimeMillis() - timer > 1000) {\r\n                timer += 1000;\r\n                fps = (byte) frames;\r\n                frames = 0;\r\n                updates = 0;\r\n            }\r\n        }\r\n\r\n        try {\r\n            stop();\r\n        } catch (InterruptedException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n\r\n    public void render() {\r\n        BufferStrategy bs = this.getBufferStrategy();\r\n        if (bs == null) {\r\n            this.createBufferStrategy(3);\r\n            return;\r\n        }\r\n        Graphics g = bs.getDrawGraphics();\r\n        g.setColor(new Color(136, 202, 252));\r\n        g.fillRect(0, 0, getWidth(), getHeight());\r\n        MainHandler.render(g);\r\n        Paddle2.render(g);\r\n        Paddle1.render(g);\r\n\r\n        g.dispose();\r\n        bs.show();\r\n    }\r\n\r\n    public void tick() {\r\n        randoNum++;\r\n        if (randoNum >= PowerUp()) {\r\n            MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,\r\n                    location.nextInt(400) + 150,\r\n                    20, 20,\r\n                    ID.SpedPU));\r\n            randoNum = 0;\r\n            PowerUp();\r\n        }\r\n        MainHandler.tick();\r\n        Paddle2.tick();\r\n        Paddle1.tick();\r\n    }\r\n\r\n    private void start() {\r\n        isRunning = true;\r\n        thread = new Thread(this);\r\n        thread.start();\r\n    }\r\n\r\n    private void stop() throws InterruptedException\r\n    {\r\n        isRunning = false;\r\n        thread.join();\r\n    }\r\n\r\n\r\n    private int PowerUp()\r\n    {\r\n\r\n        return time.nextInt(60) + 0;\r\n\r\n    }\r\n}\r\n\r\n\r\n/*\r\nThis function is typically found in games or graphics-intensive programs written in Java, and it's used to render (or draw) graphics onto the screen using something called \"double-buffering\" or in this case \"triple buffering\", hence the '3' in createBufferStrategy(3). Buffering is used to prevent screen tearing, an issue where multiple frames are shown in a single screen draw.\r\nHere's what each line of your function does:\r\nBufferStrategy bs = this.getBufferStrategy(); - The getBufferStrategy method retrieves the BufferStrategy that has been created for this component. It's used for buffering graphics that will be drawn onto the screen.\r\nif(bs == null) {...} - This block checks if a BufferStrategy has been created, and if not, it creates one using this.createBufferStrategy(3);. The '3' argument stands for \"triple buffering\", which is a specific kind of buffering strategy.\r\nGraphics g = bs.getDrawGraphics(); - This retrieves a Graphics object that can be used for drawing to the screen. Any drawing done using this Graphics object is done to one of the buffers in the BufferStrategy.\r\ng.setColor(new Color(136,202,252)); - This sets the current draw color to a light blue color (you configure the RBG values to get different colors).\r\ng.fillRect(0, 0, getWidth(), getHeight()); - This fills the entire screen with the current draw color, effectively 'clearing' the screen before new graphics are drawn.\r\nhandler.render(g); - This line assumes there's a handler object in your program that manages what gets displayed on screen. It's responsible for rendering (or drawing) individual components to the screen.\r\ng.dispose(); - This disposes the graphics context and releases any system resources that it is using.\r\nbs.show(); - This makes the next available buffer visible. It's also part of triple-buffering.\r\nSo in essence, this function prepares the screen, 'clears' the display, delegates the rendering of components to the handler object, and then disposes of the Graphics context and makes the buffer visible.\r\n */
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GameGUI/Game.java b/src/GameGUI/Game.java
+--- a/src/GameGUI/Game.java	(revision a78b5a8b21cbaa5097badad4ecf0ccefc14f938f)
++++ b/src/GameGUI/Game.java	(date 1710524695168)
+@@ -1,6 +1,7 @@
+ package GameGUI;
+ 
+ import java.awt.*;
++import java.awt.event.MouseAdapter;
+ import java.awt.image.BufferStrategy;
+ import java.io.IOException;
+ import java.util.Random;
+@@ -48,6 +49,8 @@
+         new Game();
+     }
+ 
++
++
+     @Override
+     public void run() {
+         this.requestFocus();
+@@ -82,6 +85,8 @@
+         }
+     }
+ 
++  // ba ba ba ba ba ba ba ba bom bom obm ombo bmobm bm
++
+     public void render() {
+         BufferStrategy bs = this.getBufferStrategy();
+         if (bs == null) {
+@@ -112,12 +117,14 @@
+         MainHandler.tick();
+         Paddle2.tick();
+         Paddle1.tick();
++
+     }
+ 
+     private void start() {
+         isRunning = true;
+         thread = new Thread(this);
+         thread.start();
++
+     }
+ 
+     private void stop() throws InterruptedException
+@@ -130,7 +137,7 @@
+     private int PowerUp()
+     {
+ 
+-        return time.nextInt(60) + 0;
++        return time.nextInt(600) + 200;
+ 
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" name=\"Changes\" comment=\"Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GameGUI/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GameGUI/Game.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"ca88e30b-1cc6-4bfe-8777-ce83d39c4376\" name=\"Changes by ctebandlienjrk14\" comment=\"\" />\r\n    <list id=\"1687aa9a-6241-4a0c-8b4c-f547014e03db\" name=\"Changes by ctehannd67\" comment=\"Changes by ctehannd67\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/GameGUI/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GameGUI/Game.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"717ea558-0602-4336-8ac8-c24534c4461f\" name=\"Changes by cteterrazasjaquj450\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;DomAtTheShack&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"da38ef65-5492-4fcb-bab2-1bbacf067d36\" />\r\n        <option name=\"url\" value=\"https://github.com/DomAtTheShack/Pong.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"LineStatusTrackerManager\">\r\n    <file path=\"$PROJECT_DIR$/src/GameGUI/Game.java\">\r\n      <ranges>\r\n        <range start1=\"17\" end1=\"17\" start2=\"17\" end2=\"20\" changelist=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" />\r\n        <range start1=\"23\" end1=\"24\" start2=\"26\" end2=\"27\" changelist=\"1687aa9a-6241-4a0c-8b4c-f547014e03db\" />\r\n        <range start1=\"101\" end1=\"103\" start2=\"104\" end2=\"106\" changelist=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" />\r\n        <range start1=\"119\" end1=\"120\" start2=\"122\" end2=\"124\" changelist=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" />\r\n        <range start1=\"125\" end1=\"126\" start2=\"129\" end2=\"131\" changelist=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" />\r\n        <range start1=\"127\" end1=\"128\" start2=\"132\" end2=\"133\" changelist=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" />\r\n      </ranges>\r\n    </file>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2d2q6C7kjBnnXYYTRTHqI1oogi4\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Game.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;liberica-1.8&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;/home/dominichann/IdeaProjects/Pong/src/Client&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/Client\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"NimRunConfiguration\" factoryName=\"Application\" REDIRECT_INPUT=\"false\" ELEVATE=\"false\" USE_EXTERNAL_CONSOLE=\"false\" PASS_PARENT_ENVS_2=\"true\">\r\n      <method v=\"2\">\r\n        <option name=\"nim.task.build.to.cache\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GameGUI.Game\" />\r\n      <module name=\"Pong\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-1.8.0_402-liberica-1.8.0_402-4caba194b151-4fde626f\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1be309e6-6ea3-4251-b180-3f41fbcefc98\" name=\"Changes\" comment=\"\" />\r\n      <created>1709216344282</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1709216344282</updated>\r\n      <workItem from=\"1709216345285\" duration=\"1827000\" />\r\n      <workItem from=\"1709223502277\" duration=\"2766000\" />\r\n      <workItem from=\"1709226351971\" duration=\"305000\" />\r\n      <workItem from=\"1709265168354\" duration=\"490000\" />\r\n      <workItem from=\"1709265662771\" duration=\"575000\" />\r\n      <workItem from=\"1709329540506\" duration=\"538000\" />\r\n      <workItem from=\"1709655494173\" duration=\"378000\" />\r\n      <workItem from=\"1709741873613\" duration=\"7656000\" />\r\n      <workItem from=\"1709828227875\" duration=\"2794000\" />\r\n      <workItem from=\"1710343531310\" duration=\"1046000\" />\r\n      <workItem from=\"1710430159798\" duration=\"5641000\" />\r\n      <workItem from=\"1710516055923\" duration=\"1257000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709216434906</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709216434906</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709217392365</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709217392365</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709300309226</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709300309226</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Add server and client handler classes&#10;&#10;This commit introduces two new classes: Server.java and ClientHandler.java under the Client package. These additions strengthen client-server communication by providing functionality for message handling, data transmission, and connection management. Changes were also made to the workspace.xml configuration file.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709662979052</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709662979052</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Refactor key event condition in KeyListener&#10;&#10;This commit refactors the condition handling key events for the Player1 and Player2 objects in the KeyListener class. By changing `if` to `else if`, the code clearly distinguishes key events related to different players. This change should combat possible key event conflicts between the two players.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709663557874</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709663557874</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709750503756</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709750503756</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1709828611618</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709828611618</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1710430203300</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1710430203300</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Changes by ctehannd67\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1710430644984</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1710430644984</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1710433141085</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1710433141085</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"11\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including\" />\r\n    <MESSAGE value=\"Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.\" />\r\n    <MESSAGE value=\"Create Game.java and Window.java classes, update workspace settings&#10;&#10;The new Game.java class lays the foundation for the game logic, implementing basic functions for running the game. The Window.java class provides a method for creating the game window. Workspace.xml has some minor changes for the IntelliJ project configuration.\" />\r\n    <MESSAGE value=\"Optimize game loop and update rendering function&#10;&#10;The game loop in Game.java has been refactored for better performance and clarity. The rendering function now paints the entire game area green, instead of only a specific rectangle. Workspace settings were also updated in .idea/workspace.xml.\" />\r\n    <MESSAGE value=\"Refactor classes into GameGUI package and extend Client functionalities&#10;&#10;Several classes originally located in the src directory have been moved into a new GameGUI package for better organization. Significant extension and functionalities have been added to the Client class, including connection management, message handling, and data transmission tasks. New classes ServerPacket and ClientPacket have also been added to facilitate client-server communication.\" />\r\n    <MESSAGE value=\"fixing hot karls stupid MISTAKES don't forget this\" />\r\n    <MESSAGE value=\"Add server and client handler classes&#10;&#10;This commit introduces two new classes: Server.java and ClientHandler.java under the Client package. These additions strengthen client-server communication by providing functionality for message handling, data transmission, and connection management. Changes were also made to the workspace.xml configuration file.\" />\r\n    <MESSAGE value=\"Refactor key event condition in KeyListener&#10;&#10;This commit refactors the condition handling key events for the Player1 and Player2 objects in the KeyListener class. By changing `if` to `else if`, the code clearly distinguishes key events related to different players. This change should combat possible key event conflicts between the two players.\" />\r\n    <MESSAGE value=\"Update Ball and Game classes, add main handlers &#10;&#10;Created a primary handler for the class Game and added handlers for paddles. In Ball class, implemented recording of Ball, Paddle1, and Paddle2 positions to track game state. The graphic display information has been extended to include coordinates of the ball and the paddles.\" />\r\n    <MESSAGE value=\"Changes by ctehannd67\" />\r\n    <MESSAGE value=\"Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"26\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a78b5a8b21cbaa5097badad4ecf0ccefc14f938f)
++++ b/.idea/workspace.xml	(date 1710775630623)
+@@ -6,6 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="1be309e6-6ea3-4251-b180-3f41fbcefc98" name="Changes" comment="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/GameGUI/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Ball.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/GameGUI/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameGUI/Game.java" afterDir="false" />
+     </list>
+     <list id="ca88e30b-1cc6-4bfe-8777-ce83d39c4376" name="Changes by ctebandlienjrk14" comment="" />
+@@ -46,12 +47,13 @@
+   <component name="LineStatusTrackerManager">
+     <file path="$PROJECT_DIR$/src/GameGUI/Game.java">
+       <ranges>
+-        <range start1="17" end1="17" start2="17" end2="20" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+-        <range start1="23" end1="24" start2="26" end2="27" changelist="1687aa9a-6241-4a0c-8b4c-f547014e03db" />
+-        <range start1="101" end1="103" start2="104" end2="106" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+-        <range start1="119" end1="120" start2="122" end2="124" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+-        <range start1="125" end1="126" start2="129" end2="131" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+-        <range start1="127" end1="128" start2="132" end2="133" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="3" end1="3" start2="3" end2="4" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="26" end1="27" start2="27" end2="28" changelist="1687aa9a-6241-4a0c-8b4c-f547014e03db" />
++        <range start1="49" end1="49" start2="50" end2="52" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="83" end1="83" start2="86" end2="88" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="114" end1="114" start2="119" end2="120" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="120" end1="120" start2="126" end2="127" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
++        <range start1="132" end1="133" start2="139" end2="140" changelist="1be309e6-6ea3-4251-b180-3f41fbcefc98" />
+       </ranges>
+     </file>
+   </component>
+@@ -140,7 +142,8 @@
+       <workItem from="1709828227875" duration="2794000" />
+       <workItem from="1710343531310" duration="1046000" />
+       <workItem from="1710430159798" duration="5641000" />
+-      <workItem from="1710516055923" duration="1257000" />
++      <workItem from="1710516055923" duration="6813000" />
++      <workItem from="1710775036240" duration="596000" />
+     </task>
+     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore&#10;&#10;New project configuration files have been added for IntelliJ including modules.xml, workspace.xml, misc.xml, Pong.iml, and vcs.xml. Additionally, a .gitignore file has been created to ignore unnecessary and system-dependent files, which includes rules for IntelliJ, Eclipse, NetBeans, VS Code and MacOS related files.">
+       <option name="closed" value="true" />
+@@ -222,7 +225,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1710433141085</updated>
+     </task>
+-    <option name="localTasksCounter" value="11" />
++    <task id="LOCAL-00011" summary="Update scoring system functionality&#10;&#10;Modified the scoring system in Ball.java to increment the score whenever a ball hits the edges of the game area. Replaced the individual score variables in Display.java with a single score variable and added a score increment method. Also added a getDisplay method to Handler.java to facilitate the new scoring system.">
++      <option name="closed" value="true" />
++      <created>1710517547816</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1710517547816</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">

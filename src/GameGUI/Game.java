@@ -1,5 +1,7 @@
 package GameGUI;
 
+import jdk.jfr.internal.tool.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,6 +28,8 @@ public class Game extends Canvas implements Runnable {
 
     public static int frames = 0;
     public static int updates = 0;
+    public int maxPUCap = 6;
+    public static int PUNum = 0;
 
     public Game() {
 
@@ -50,6 +54,7 @@ public class Game extends Canvas implements Runnable {
             createMenu();
             do {
             //Nothing
+            Thread.sleep(100);
             } while (InMenu);
             Thread.sleep(100);
         }
@@ -71,6 +76,25 @@ public class Game extends Canvas implements Runnable {
         startButton.setBounds(50, 50, 100, 30); // Adjusted position and size
         startButton.setBackground(ButtonColor); // Set background color
         startButton.setOpaque(true); // Make button opaque
+
+        // Create a mute button
+        JButton muteButton = new JButton("Not Muted");
+        muteButton.setBounds(25, 70, 100, 30); // Adjusted position and size
+        muteButton.setBackground(ButtonColor); // Set background color
+        muteButton.setOpaque(true); // Make button opaque
+
+        // Create a debug button
+        JButton debugButton = new JButton("Debug off");
+        debugButton.setBounds(25, 110, 100, 30); // Adjusted position and size
+        debugButton.setBackground(ButtonColor); // Set background color
+        debugButton.setOpaque(true); // Make button opaque
+
+        JLabel VolLabel = new JLabel("Volume: ");
+        VolLabel.setBounds(5 , 235, 100, 15);
+        JSlider Volume = new JSlider(0,100,75);
+        Volume.setBounds(55,235,100,15);
+        Volume.setBackground(ButtonColor);
+        Volume.setOpaque(true);
 
         JButton exitButton = new JButton("Exit");
         exitButton.setBounds(50, 150, 100, 30); // Adjusted position and size
@@ -103,6 +127,10 @@ public class Game extends Canvas implements Runnable {
         settingsPanel.setBackground(BackroundColor); // Add background color for visualization
         settingsPanel.setBounds(0, 0, 600, 300); // Adjusted size to cover the frame
         settingsPanel.add(backButton);
+        settingsPanel.add(muteButton);
+        settingsPanel.add(debugButton);
+        settingsPanel.add(Volume);
+        settingsPanel.add(VolLabel);
 
         ImageIcon icon = new ImageIcon(Game.class.getClassLoader().getResource("test.gif"));
         JLabel label = new JLabel(icon);
@@ -194,26 +222,32 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void tick() throws InterruptedException {
-        if(Game.MainHandler.getP1Score().score == 10)
-        {
-            GameWin(true);
-        }
-        if(Game.MainHandler.getP2Score().score == 10)
-        {
-            GameWin(false);
-        }
+
         randoNum++;
-        if (randoNum >= PowerUp()) {
-            MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,
-                    location.nextInt(400) + 150,
-                    20, 20,
-                    ID.SpedPU));
-            randoNum = 0;
-            PowerUp();
+        if(PUNum != maxPUCap) {
+            if (randoNum >= PowerUp()) {
+                MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,
+                        location.nextInt(400) + 150,
+                        20, 20,
+                        ID.SpedPU));
+                randoNum = 0;
+                PowerUp();
+                PUNum ++;
+            }
+        }else{
+            PUNum--;
         }
         MainHandler.tick();
         Paddle2.tick();
         Paddle1.tick();
+        if(Game.MainHandler.getP1Score().score == 15)
+        {
+            GameWin(true);
+        }
+        if(Game.MainHandler.getP2Score().score == 15)
+        {
+            GameWin(false);
+        }
     }
 
     private void start() {
