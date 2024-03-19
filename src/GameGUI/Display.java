@@ -34,8 +34,9 @@ public class Display extends GameObject
 
             g.setColor(new Color(64, 64, 102));
             g.drawString("FPS: " + Display + "\nBall XY: " + Game.MainHandler.object.get(1).getX() + " " + Game.MainHandler.object.get(1).getY()
-                    + "\n P1 XY: " + Game.MainHandler.getP1Pabble().getX() + " " + Game.MainHandler.getP1Pabble().getY()
-                    + "\n P2 XY: " + Game.MainHandler.getP2Pabble().getX() + " " + Game.MainHandler.getP2Pabble().getY(), x, y);
+                    + "\n P1 XY: " + Game.MainHandler.getP1Pabble().getX() + ", " + Game.MainHandler.getP1Pabble().getY()
+                    + "\n P2 XY: " + Game.MainHandler.getP2Pabble().getX() + ", " + Game.MainHandler.getP2Pabble().getY()
+                    + "\n Ball velX & velY: " + Game.MainHandler.getBall().velX + ", " + Game.MainHandler.getBall().velY, x, y);
         }else
         {
             g.setColor(new Color(151,217,255));

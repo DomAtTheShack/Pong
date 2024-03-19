@@ -20,10 +20,10 @@ public class Pabble extends MovableObject
 
         //Movement
         if (handler.isUp())
-            velY = -8;
+            velY = -9;
         else if (!handler.isDown()) velY = 0;
 
-        if (handler.isDown()) velY = 8;
+        if (handler.isDown()) velY = 9;
         else if (!handler.isUp()) velY = 0;
         if (y <= 10)
         {
@@ -48,6 +48,6 @@ public class Pabble extends MovableObject
     @Override
     public Rectangle getBounds()
      {
-        return new Rectangle(x, y - 5, width, length + 10);
+        return new Rectangle(x, y - 10, width, length + 15);
     }
 }

@@ -8,16 +8,8 @@ public class Ball extends MovableObject
 {
     private final Random BallDevation = new Random();
     int randomNum = BallDevation.nextInt(6) + 1;
-
-
-
-
-    private Rectangle PrevP1;
-    private Rectangle PrevP2;
-    private Rectangle PrevBall;
-
-    private static final int bound = 6;
-    private static final int velXCap = 12;
+    private static final int bound = 2;
+    private static final int velXCap = 10;
     private static final int velYCap = 8;
     private static final int velYMinCap = 8;
     private  static int waitForBall = 100;
@@ -76,33 +68,10 @@ public class Ball extends MovableObject
                 hit = true;
             }
             relocateBall(paddle, paddleR, ballR, hit);
-        }
-    }
-    private void handleWallCollisions() throws InterruptedException {
-        if (y >= 645) {
-            y --;
-            velY *= -1;
-        } else if(y<=0) {
-            y++;
-            velY *= -1;
-        }
-        if(x <= 0) {
-            Game.MainHandler.getP2Score().incrementScore();
-            x = 500;
-            y = 300;
-            velX = 5;
-            velY = 5;
-
-
-        } else if(x >= 970) {
-            Game.MainHandler.getP1Score().incrementScore();
-            x = 500;
-            y = 300;
-            velX = -5;
-            velY = -5;
 
         }
     }
+
     private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR, boolean hit) {
         if(hit) {
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
@@ -122,37 +91,117 @@ public class Ball extends MovableObject
                 x = paddleR.x + paddleR.width;
                 velX += BallDevation.nextInt(bound) + 3; // Add deviation to velX
             }
-            int tempSpeed = BallDevation.nextInt(2) + 1;
-            boolean slow = BallDevation.nextInt(10) > 6;
-            int directionFactor;
-            if (velX < 0) {
-                directionFactor = -1;
-            } else {
-                directionFactor = 1;
-            }
-            if (slow) {
-                velX -= directionFactor * tempSpeed;
-                velY -= directionFactor * tempSpeed;
-
-            } else {
-                velX += directionFactor * tempSpeed;
-                velY += directionFactor * tempSpeed;
-            }
-            if(velX > velXCap)
-            {
-                velX = velXCap;
-            }else{
-                velX = -velXCap;
-            }
-            if(velY > velYCap)
-            {
-                velY = velYCap;
-            }else{
-                velY = -velYCap;
-            }
-
+            adjustSpeed();
+            capSpeed();
         }
     }
+    public void adjustSpeed()
+    {
+        int tempSpeed = BallDevation.nextInt(2);
+        boolean slow = BallDevation.nextInt(10) > 5;
+        int directionFactor;
+        if (velX < 0) {
+            directionFactor = -1;
+        } else {
+            directionFactor = 1;
+        }
+        if (slow) {
+            velX -= directionFactor * tempSpeed;
+            velY -= directionFactor * tempSpeed;
+
+        } else {
+            velX += directionFactor * tempSpeed;
+            velY += directionFactor * tempSpeed;
+        }
+    }
+
+    public void capSpeed()
+    {
+        int tempSpeed = BallDevation.nextInt(2);
+        int directionFactor;
+        if (velX < 0) {
+            directionFactor = -1;
+        } else {
+            directionFactor = 1;
+        }
+        if(velX > velXCap)
+        {
+            velX = velXCap;
+            velX -= directionFactor * tempSpeed;
+        }else if(velX < -velXCap){
+            velX = -velXCap;
+            velX += directionFactor * tempSpeed;
+        }
+        if(velY > velYCap)
+        {
+            velY = velYCap;
+            velY -= directionFactor * tempSpeed;
+        }else if (velY < -velYCap){
+            velY = -velYCap;
+            velY += directionFactor * tempSpeed;
+        }else if (velY < velYMinCap){
+            velY += directionFactor * tempSpeed;
+        }else if(velY > -velYMinCap){
+            velX -= directionFactor * tempSpeed;
+        }
+    }
+    private void handleWallCollisions() throws InterruptedException {
+        if (y >= 645) {
+            y --;
+            velY *= -1;
+        } else if(y<=0) {
+            y++;
+            velY *= -1;
+        }
+        if(x <= 0) {
+            Game.MainHandler.getP2Score().incrementScore();
+            x = 300;
+            y = 300;
+            velX = 0;
+            velY = 0;
+            waitFor = true;
+            p2Lost = false;
+
+        } else if(x >= 970) {
+            Game.MainHandler.getP1Score().incrementScore();
+            x = 700;
+            y = 300;
+            velX = 0;
+            velY = 0;
+            waitFor = true;
+            p2Lost = true;
+        }
+            if(waitFor)
+            {
+                if(waitForBall == 0)
+                {
+                    boolean randomY = BallDevation.nextBoolean();
+                    waitForBall = 100;
+                    waitFor = false;
+                    if(p2Lost){
+                        velY = -5;
+                        velX = -5;
+                        adjustSpeed();
+                        capSpeed();
+                    }else{
+                        velY = 5;
+                        velX = 5;
+                        adjustSpeed();
+                        capSpeed();
+                    }
+                    if(randomY){
+                        velY *= -1;
+                    }
+
+                }else
+                    waitForBall --;
+            }
+            
+            
+
+
+    }
+
 
     @Override
     public void render(Graphics g) {

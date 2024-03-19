@@ -2,6 +2,8 @@ package GameGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.util.Random;
@@ -20,12 +22,12 @@ public class Game extends Canvas implements Runnable {
     private Random time = new Random();
 
     private long randoNum = 0;
-
+    private static boolean InMenu = true;
 
     public static int frames = 0;
     public static int updates = 0;
 
-    public Game() throws IOException {
+    public Game() {
 
         new Window(1000, 700, "Pong", this);
         start();
@@ -43,16 +45,97 @@ public class Game extends Canvas implements Runnable {
         MainHandler.addObject(new Ball(100, 100, 20, 20, ID.Ball));
     }
 
-    public static void main(String[] args) throws IOException {
-        boolean InMenu = true;
+    public static void main(String[] args) throws IOException, InterruptedException {
+        if(args.length >= 1 && args[0].equals("--usemenu")) {
+            createMenu();
+            do {
+            //Nothing
+            } while (InMenu);
+            Thread.sleep(100);
+        }
+        new Game();
+    }
+
+    private static void createMenu()
+    {
+        // Create JFrame and set properties
         JFrame frame = new JFrame("Menu");
         frame.setSize(600, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        do {
+        frame.setResizable(false);
+        Color ButtonColor = new Color(254,249,217);
+        Color BackroundColor = new Color(226,121,59);
 
-        }while (InMenu);
-        new Game();
+        // Create buttons for main menu
+        JButton startButton = new JButton("Start");
+        startButton.setBounds(50, 50, 100, 30); // Adjusted position and size
+        startButton.setBackground(ButtonColor); // Set background color
+        startButton.setOpaque(true); // Make button opaque
+
+        JButton exitButton = new JButton("Exit");
+        exitButton.setBounds(50, 150, 100, 30); // Adjusted position and size
+        exitButton.setBackground(ButtonColor); // Set background color
+        exitButton.setOpaque(true); // Make button opaque
+
+        JButton settingsButton = new JButton("Settings");
+        settingsButton.setBounds(50, 100, 100, 30); // Adjusted position and size
+        settingsButton.setBackground(ButtonColor); // Set background color
+        settingsButton.setOpaque(true); // Make button opaque
+
+        // Create buttons for settings menu
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(5, 5, 75, 30); // Adjusted position and size
+        backButton.setBackground(ButtonColor); // Set background color
+        backButton.setOpaque(true); // Make button opaque
+
+        // Create JPanel for main menu
+        JPanel mainPanel = new JPanel(null); // Set layout to null for absolute positioning
+        mainPanel.setLayout(null); // Set layout to null for absolute positioning
+        mainPanel.setBackground(BackroundColor); // Add background color for visualization
+        mainPanel.setBounds(0, 0, 600, 300); // Adjusted size to cover the frame
+        mainPanel.add(startButton);
+        mainPanel.add(exitButton);
+        mainPanel.add(settingsButton);
+
+        // Create JPanel for settings menu
+        JPanel settingsPanel = new JPanel(null); // Set layout to null for absolute positioning
+        settingsPanel.setLayout(null); // Set layout to null for absolute positioning
+        settingsPanel.setBackground(BackroundColor); // Add background color for visualization
+        settingsPanel.setBounds(0, 0, 600, 300); // Adjusted size to cover the frame
+        settingsPanel.add(backButton);
+
+        ImageIcon icon = new ImageIcon(Game.class.getClassLoader().getResource("test.gif"));
+        JLabel label = new JLabel(icon);
+        label.setBounds(495,158,icon.getIconWidth(),icon.getIconHeight());
+        settingsPanel.add(label);
+
+        // Create CardLayout and add panels to it
+        CardLayout cardLayout = new CardLayout();
+        JPanel cardPanel = new JPanel(cardLayout);
+        cardPanel.add(mainPanel, "Main");
+        cardPanel.add(settingsPanel, "Settings");
+
+        // Add ActionListener to settingsButton to switch to settingsPanel
+        settingsButton.addActionListener(e -> cardLayout.show(cardPanel, "Settings"));
+
+        // Add ActionListener to backButton to switch back to mainPanel
+        backButton.addActionListener(e -> cardLayout.show(cardPanel, "Main"));
+
+        exitButton.addActionListener(e -> System.exit(0));
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                InMenu = false;
+            }
+        });
+
+        // Add cardPanel to the frame
+        frame.add(cardPanel);
+
+        // Make the JFrame visible
+        frame.setVisible(true);
     }
 
     @Override
