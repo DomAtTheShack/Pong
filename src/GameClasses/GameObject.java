@@ -1,7 +1,10 @@
-package GameGUI;
+package GameClasses;
+
+import GameGUI.ID;
 
 import java.awt.*;
 
+@SuppressWarnings("unused")
 public abstract class GameObject {
 
     protected int x, y;

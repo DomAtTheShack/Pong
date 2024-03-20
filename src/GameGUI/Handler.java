@@ -1,7 +1,13 @@
 package GameGUI;
 
+import GameClasses.Display;
+import GameClasses.GameObject;
+import GameClasses.MovableObject;
+
 import java.awt.*;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Handler {
 
@@ -35,24 +41,24 @@ public class Handler {
     public void addHandler(Handler handler) {subHandlers.add(handler);}
     public void removeHandler(Handler handler) {subHandlers.remove(handler);}
 
-    public GameObject getP1Pabble() {
-        GameObject tempObject = null;
+    public MovableObject getP1Pabble() {
+        MovableObject tempObject = null;
         for (Handler subHandler : subHandlers) {
             for (GameObject temp : subHandler.object) {
-                if (temp.id.equals(ID.P1Pabble)) {
-                    tempObject = temp;
+                if (temp.getId().equals(ID.P1Pabble)) {
+                    tempObject = (MovableObject) temp;
                     break;
                 }
             }
         }
         return tempObject;
     }
-    public GameObject getP2Pabble() {
-        GameObject tempObject = null;
+    public MovableObject getP2Pabble() {
+        MovableObject tempObject = null;
         for (Handler subHandler : subHandlers) {
             for (GameObject temp : subHandler.object) {
-                if (temp.id.equals(ID.P2Pabble)) {
-                    tempObject = temp;
+                if (temp.getId().equals(ID.P2Pabble)) {
+                    tempObject = (MovableObject) temp;
                     break;
                 }
             }
@@ -83,7 +89,7 @@ public class Handler {
     }
     public GameObject getBall() {
         for (GameObject temp : object) {
-           if(temp.id.equals(ID.Ball))
+           if(temp.getId().equals(ID.Ball))
            {
                return temp;
            }
@@ -91,16 +97,11 @@ public class Handler {
         return null;
     }
 
-    public LinkedList<GameObject> getObjects()
-    {
-        return object;
-    }
-
     public Display getP1Score()
     {
         for(GameObject tempDisplay: object)
         {
-            if(tempDisplay.id.equals(ID.P1Score))
+            if(tempDisplay.getId().equals(ID.P1Score))
                 return (Display) tempDisplay;
         }
         return null;
@@ -109,7 +110,7 @@ public class Handler {
     {
         for(GameObject tempDisplay: object)
         {
-            if(tempDisplay.id.equals(ID.P2Score))
+            if(tempDisplay.getId().equals(ID.P2Score))
                 return (Display) tempDisplay;
         }
         return null;

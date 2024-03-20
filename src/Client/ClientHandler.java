@@ -1,9 +1,7 @@
 package Client;
 
 import GameGUI.Game;
-import GameGUI.GameObject;
 import GameGUI.ID;
-import GameGUI.Pabble;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

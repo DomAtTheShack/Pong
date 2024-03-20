@@ -10,7 +10,8 @@ ID
     P1Score(),
     P2Score(),
     Ball(),
-    SpedPU();
+    SpedPU(),
+    LargePabblePU();
 
 
 }

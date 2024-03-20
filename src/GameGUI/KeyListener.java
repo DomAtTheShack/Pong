@@ -1,5 +1,7 @@
 package GameGUI;
 
+import GameClasses.GameObject;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

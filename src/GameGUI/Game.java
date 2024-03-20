@@ -1,6 +1,9 @@
 package GameGUI;
 
-import jdk.jfr.internal.tool.Main;
+import GameClasses.Ball;
+import GameClasses.Display;
+import GameClasses.Pabble;
+import GameClasses.PowerUps;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,11 +20,9 @@ public class Game extends Canvas implements Runnable {
     private static Thread thread;
     public static Handler MainHandler = new Handler();
     public static byte fps;
-    private Handler Paddle1;
-    private Handler Paddle2;
-    private Random location = new Random();
-
-    private Random time = new Random();
+    private final Handler Paddle1;
+    private final Handler Paddle2;
+    private final Random MainGameRandomNum = new Random();
 
     private long randoNum = 0;
     private static boolean InMenu = true;
@@ -222,17 +223,30 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void tick() throws InterruptedException {
+        int switchStatement = MainGameRandomNum.nextInt(2);
 
         randoNum++;
         if(PUNum != maxPUCap) {
             if (randoNum >= PowerUp()) {
-                MainHandler.addObject(new PowerUps(location.nextInt(350) + 320,
-                        location.nextInt(400) + 150,
-                        20, 20,
-                        ID.SpedPU));
-                randoNum = 0;
-                PowerUp();
-                PUNum ++;
+                switch (switchStatement) {
+                    case 0:
+                        MainHandler.addObject(new PowerUps(MainGameRandomNum.nextInt(350) + 320,
+                            MainGameRandomNum.nextInt(400) + 150,
+                            20, 20,
+                            ID.SpedPU));
+                        randoNum = 0;
+                        PowerUp();
+                        PUNum++;
+                    break;
+                    case 1:
+                        MainHandler.addObject(new PowerUps(MainGameRandomNum.nextInt(350) + 320,
+                                MainGameRandomNum.nextInt(400) + 150,
+                                20, 20,
+                                ID.LargePabblePU));
+                        randoNum = 0;
+                        PowerUp();
+                        PUNum++;
+                }
             }
         }else{
             PUNum--;
@@ -240,11 +254,11 @@ public class Game extends Canvas implements Runnable {
         MainHandler.tick();
         Paddle2.tick();
         Paddle1.tick();
-        if(Game.MainHandler.getP1Score().score == 15)
+        if(Game.MainHandler.getP1Score().getScore() == 15)
         {
             GameWin(true);
         }
-        if(Game.MainHandler.getP2Score().score == 15)
+        if(Game.MainHandler.getP2Score().getScore() == 15)
         {
             GameWin(false);
         }
@@ -276,9 +290,9 @@ public class Game extends Canvas implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if(P1Win)
         {
-            JOptionPane.showMessageDialog(frame,"Player 1 wins the game with a lead of " + (MainHandler.getP1Score().score - MainHandler.getP2Score().score)  + " points!");
+            JOptionPane.showMessageDialog(frame,"Player 1 wins the game with a lead of " + (MainHandler.getP1Score().getScore() - MainHandler.getP2Score().getScore())  + " points!");
         }else {
-            JOptionPane.showMessageDialog(frame,"Player 2 wins the game with a lead of " + (MainHandler.getP2Score().score - MainHandler.getP1Score().score)  + " points!");
+            JOptionPane.showMessageDialog(frame,"Player 2 wins the game with a lead of " + (MainHandler.getP2Score().getScore() - MainHandler.getP1Score().getScore())  + " points!");
         }
         System.exit(0);
         stop();

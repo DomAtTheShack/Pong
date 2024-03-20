@@ -1,4 +1,7 @@
-package GameGUI;
+package GameClasses;
+
+import GameGUI.Game;
+import GameGUI.ID;
 
 import java.awt.*;
 import java.util.Random;
@@ -7,7 +10,6 @@ import java.util.Random;
 public class Ball extends MovableObject
 {
     private final Random BallDevation = new Random();
-    int randomNum = BallDevation.nextInt(6) + 1;
     private static final int bound = 2;
     private static final int velXCap = 10;
     private static final int velYCap = 8;
@@ -26,8 +28,7 @@ public class Ball extends MovableObject
 
     @Override
     public void tick() throws InterruptedException {
-        x += velX;
-        y += velY;
+        super.tick();
         BallDevation.nextInt(6);
 
         handleWallCollisions();
@@ -38,11 +39,11 @@ public class Ball extends MovableObject
         Rectangle P2R = P2.getBounds();
         Rectangle BALL = getBounds();
 
-        handlePabbleCollision(P1, P1R, BALL);
-        handlePabbleCollision(P2, P2R, BALL);
+        handlePabbleCollision(P1R, BALL);
+        handlePabbleCollision(P2R, BALL);
     }
 
-    private void handlePabbleCollision(GameObject paddle, Rectangle paddleR, Rectangle ballR) {
+    private void handlePabbleCollision(Rectangle paddleR, Rectangle ballR) {
         boolean hit = false;
 
         if (paddleR.intersects(ballR)) {
@@ -67,12 +68,13 @@ public class Ball extends MovableObject
                 velX *= -1;
                 hit = true;
             }
-            relocateBall(paddle, paddleR, ballR, hit);
+            relocateBall(paddleR, ballR, hit);
 
         }
     }
 
-    private void relocateBall(GameObject paddle, Rectangle paddleR, Rectangle ballR, boolean hit) {
+    @SuppressWarnings("UnnecessaryUnaryMinus")
+    private void relocateBall(Rectangle paddleR, Rectangle ballR, boolean hit) {
         if(hit) {
             if (ballR.y <= paddleR.y + paddleR.height && ballR.y + ballR.height >= paddleR.y + paddleR.height) {
                 // Top collision
@@ -145,7 +147,7 @@ public class Ball extends MovableObject
             velX -= directionFactor * tempSpeed;
         }
     }
-    private void handleWallCollisions() throws InterruptedException {
+    private void handleWallCollisions() {
         if (y >= 645) {
             y --;
             velY *= -1;
@@ -154,75 +156,61 @@ public class Ball extends MovableObject
             velY *= -1;
         }
         if(x <= 0) {
-            Game.MainHandler.getP2Score().incrementScore();
-            x = 300;
-            y = 300;
-            velX = 0;
-            velY = 0;
-            waitFor = true;
-            p2Lost = false;
-            int toRemove = -1;
-            for(int i = 0; i < Game.MainHandler.object.size(); i++)
-            {
-                if(Game.MainHandler.object.get(i).getId().equals(ID.SpedPU)) {
-                    toRemove = i;
-
-                }
-            }
-            if(toRemove != -1)
-                Game.MainHandler.object.remove(toRemove);
-            Game.PUNum = 0;
-
-        } else if(x >= 970) {
             Game.MainHandler.getP1Score().incrementScore();
-            x = 700;
-            y = 300;
-            velX = 0;
-            velY = 0;
-            waitFor = true;
-            p2Lost = true;
-            int toRemove = -1;
-            for(int i = 0; i < Game.MainHandler.object.size(); i++)
-            {
-                if(Game.MainHandler.object.get(i).getId().equals(ID.SpedPU)) {
-                    toRemove = i;
-
-                }
-            }
-            if(toRemove != -1)
-                Game.MainHandler.object.remove(toRemove);
-            Game.PUNum = 0;
+            RestartRound(true);
+        } else if(x >= 970) {
+            Game.MainHandler.getP2Score().incrementScore();
+            RestartRound(false);
         }
             if(waitFor)
             {
-                if(waitForBall == 0)
-                {
-                    boolean randomY = BallDevation.nextBoolean();
-                    waitForBall = 100;
-                    waitFor = false;
-                    if(p2Lost){
-                        velY = -5;
-                        velX = -5;
-                        adjustSpeed();
-                        capSpeed();
-                    }else{
-                        velY = 5;
-                        velX = 5;
-                        adjustSpeed();
-                        capSpeed();
-                    }
-                    if(randomY){
-                        velY *= -1;
-                    }
-
-                }else
-                    waitForBall --;
+               HoldBall();
             }
-            
-            
-
-
     }
+    private void RestartRound(boolean P1Score)
+    {
+        x = P1Score ? 700 : 300;
+        y = 300;
+        velX = 0;
+        velY = 0;
+        waitFor = true;
+        p2Lost = true;
+        int toRemove = -1;
+        for(int i = 0; i < Game.MainHandler.object.size(); i++)
+        {
+            if(Game.MainHandler.object.get(i).getId().equals(ID.SpedPU)) {
+                toRemove = i;
+
+            }
+        }
+        if(toRemove != -1)
+            Game.MainHandler.object.remove(toRemove);
+        Game.PUNum = 0;
+    }
+    private void HoldBall()
+    {
+        if(waitForBall == 0)
+        {
+            boolean randomY = BallDevation.nextBoolean();
+            waitForBall = 100;
+            waitFor = false;
+            if(p2Lost){
+                velY = -5;
+                velX = -5;
+            }else{
+                velY = 5;
+                velX = 5;
+            }
+            adjustSpeed();
+            capSpeed();
+            if(randomY){
+                velY *= -1;
+            }
+
+        }else
+            waitForBall --;
+    }
+
 
 
     @Override

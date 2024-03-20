@@ -1,8 +1,10 @@
-package GameGUI;
+package GameClasses;
+
+import GameGUI.ID;
 
 import java.awt.*;
 
-public class MovableObject extends GameObject
+public abstract class MovableObject extends GameObject
 {
     protected int width, length;
 
@@ -12,10 +14,26 @@ public class MovableObject extends GameObject
         this.width = width;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     @Override
     public void tick() throws InterruptedException {
-        x += velX;
-        y += velY;
+        x += (int) velX;
+        y += (int) velY;
     }
 
     @Override

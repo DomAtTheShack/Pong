@@ -1,8 +1,7 @@
 package Client;
 
 
-import GameGUI.Game;
-import GameGUI.GameObject;
+import GameClasses.GameObject;
 import GameGUI.Handler;
 import GameGUI.ID;
 
@@ -88,7 +87,7 @@ public class Client
                             if(receivedPacket.getSender().equals("server"))
                             {
                                 Handler handler = receivedPacket.getHandler();
-                                for(GameObject X : handler.getObjects())
+                                for(GameObject X : handler.object)
                                 {
                                     System.out.println(X.getBounds());
                                 }

@@ -1,4 +1,7 @@
-package GameGUI;
+package GameClasses;
+
+import GameGUI.Game;
+import GameGUI.ID;
 
 import java.awt.*;
 
@@ -16,10 +19,6 @@ public class Display extends GameObject
     @Override
     public void tick() {
         Display = String.valueOf(Game.fps);
-
-//        score1 = String.valueOf(Game.scoreP1);
-//        score2 = String.valueOf(Game.scoreP2);
-
     }
     public void incrementScore()
     {
@@ -45,6 +44,10 @@ public class Display extends GameObject
             g.drawString(String.valueOf(score), x, y);
             g.setFont(normalFont);
         }
+    }
+    public int getScore()
+    {
+        return score;
     }
 
     @Override
